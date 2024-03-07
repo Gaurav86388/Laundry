@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Button = ({buttonName, classname}) => {
+const Button = ({buttonName, classname, link}) => {
 
     function handleOnClick(){
-
+      
     }
   return (
     <div>
-        <input type="button" value={buttonName} className={classname} onClick={handleOnClick}/>
+        <Link to={link}><input type="button" value={buttonName} className={classname} onClick={handleOnClick}/></Link>
     </div>
   )
 }

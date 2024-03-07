@@ -15,7 +15,7 @@ const Signin = () => {
 
             <div className='register-text'>
                 <p>Don't Have An Account?</p>
-                <Button classname='register-btn' buttonName="Register"/>
+                <Button classname='register-btn' buttonName="Register" link="/register"/>
             </div>
 
         </div>
