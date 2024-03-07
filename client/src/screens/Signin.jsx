@@ -1,13 +1,15 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
+import "./SignIn.css"
+
 const Signin = () => {
   return (
     <div className='signin'>
         <Navbar />
         <div className="signin-left">
 
-            <h1 className='signin-left-title'><span> Laundry</span><span>Service</span></h1>
+            <h1 className='signin-left-title'><span> Laundry</span><br/><span>Service</span></h1>
             <h4>Doorstep Wash & Dryclean Service</h4>
 
             <div className='register-text'>
@@ -23,15 +25,20 @@ const Signin = () => {
 
             <form action="">
 
-                <label htmlFor="mobile-email">Mobile / Email</label>
+                <label className="mobile-email" htmlFor="mobile-email">Mobile / Email</label>
                 <input type="text" />
-                <label htmlFor="password">Password</label>
+                <label className="password" htmlFor="password">Password</label>
                 <input type="text" />
                 <input type="url" name="forget-password" id="forget-password" value="Forget Password?"/>
 
                 <Button buttonName="Sign In"classname='signin-btn'/>
             </form>
 
+        </div>
+        
+        <div className='refer'>
+            <p className='refer-text'>Now Refer & Earn ₹500 for every referral*</p>
+            <p className='TandC'>* Terms and conditions will be applied</p>
         </div>
 
     </div>
