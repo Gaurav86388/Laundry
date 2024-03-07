@@ -1,6 +1,7 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const { default: mongoose } = require("mongoose");
+import express from 'express'
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import router from './Router/Router';
 const app = express()
 
 const mongoDBURL ="mongodb+srv://pratikbulkunde03:pratik@cluster0.enkdn1t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -10,20 +11,27 @@ app.use(express.json());
 
 const PORT = "8080";
 
-app.get('/', (req, res)=>{
-    return res.status(404).send("Hello")
-});
-app.post('/', (req, res)=>{
-    return res.status(404).send("Hello")
-});
+async function main(){
 
+    try{
+       await  mongoose.connect(mongoDBURL)
+    }
+    catch(e){
+        console.log(e)
+    }
 
-mongoose.connect(mongoDBURL)
-.then(()=>{
-    console.log("Connected")
+    app.use("/", router)
+
+    
+
     app.listen(PORT, ()=>{
         console.log(`App is listening on ${PORT}`)
     })
-}).catch((e)=>{
-    console.log(e)
-})
+
+} 
+
+
+main().catch(e=>console.log(e))
+
+
+

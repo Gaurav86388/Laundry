@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import "./SignIn.css"
+import footerImg from '/Footer@2x.png'
 
 const Signin = () => {
   return (
@@ -39,6 +40,10 @@ const Signin = () => {
         <div className='refer'>
             <p className='refer-text'>Now Refer & Earn ₹500 for every referral*</p>
             <p className='TandC'>* Terms and conditions will be applied</p>
+        </div>
+
+        <div className='footer-img'>
+            <img src={footerImg} alt="footer image"/>
         </div>
 
     </div>
