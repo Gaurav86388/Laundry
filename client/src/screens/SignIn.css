@@ -23,8 +23,8 @@ color: #5861AE;
 text-transform: capitalize;
 opacity: 1;
 }
-h4{
-    position: absolute;
+.door{
+    position: relative;
     top: 501px;
 left: 151px;
 width: 335px;
@@ -36,34 +36,125 @@ color: #565657;
 text-transform: capitalize;
 opacity: 1;
 }
-.register-text p {
+.reg-register-btn{
     position: absolute;
-    top: 602px;
-left: 152px;
-width: 189px;
-height: 22px;
-text-align: left;
-font: normal normal normal 16px/26px Avenir;
-letter-spacing: 0.64px;
-color: #565657;
-text-transform: capitalize;
-opacity: 1;
-}
-.register-btn{
- position: absolute;
-top: 640px;
+    top: 650px;
 left: 152px;
 width: 150px;
 height: 50px;
 background-color: #FFFFFF;
-border: 2px solid #4552C1;
-border-radius: 4px;
-text-align: center;
-font: normal normal bold 15px/20px Open Sans;
-letter-spacing: 0.3px;
 color: #4552C1;
+border: 2px solid #4552C1;
+font-size: larger;
+border-radius: 4px;
 opacity: 1;
 }
+#register-text{
+    position: absolute;
+    top: 602px;
+    left: 152px;
+    width: 189px;
+height: 22px;
+    text-align: left;
+    font: normal normal normal 16px / 26px Avenir;
+    letter-spacing: 0.64px;
+    color: #565657;
+    text-transform: capitalize;
+    opacity: 1;
+}
+#Signin-head{
+    position: relative;
+    top: 182px;
+left: 130px;
+width: 128px;
+height: 44px;
+text-align: left;
+font: normal normal medium 32px/60px Avenir;
+letter-spacing: 1.28px;
+color: #4552C1;
+text-transform: uppercase;
+opacity: 1;
+}
+.wrapper{
+    width: 450px;
+    padding: 30px;
+    position: absolute;
+    width: 450px;
+    padding: 30px;
+    top: 299px;
+    left: 135px;
+
+}
+.wrapper .input-data{
+    height: 40px;
+    width: 100%;
+    position: relative;
+    
+}
+.wrapper .input-data input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    background: transparent;
+    border-bottom: 3px solid #565657;
+}
+.input-data input:focus ~ label,
+.input-data input:valid ~ label {
+    transform: translateY(-30px);
+    font-size: 15px;
+    color: #565657;
+    border: none;
+}
+.wrapper .input-data label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.wrapper-pass{
+    width: 450px;
+    padding: 30px;
+    position: absolute;
+    width: 450px;
+    padding: 30px;
+    top: 400px;
+    left: 135px;
+
+}
+.wrapper-pass .input-data-pass{
+    height: 40px;
+    width: 100%;
+    position: relative;
+    
+}
+.wrapper-pass .input-data-pass input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    background: transparent;
+    border-bottom: 3px solid #565657;
+}
+.input-data-pass input:focus ~ label,
+.input-data-pass input:valid ~ label {
+    transform: translateY(-30px);
+    font-size: 15px;
+    color: #565657;
+    border: none;
+}
+.wrapper-pass .input-data-pass label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+
 .signin-right{
     position: absolute;
     top: 81px;
@@ -89,19 +180,29 @@ text-transform: uppercase;
 opacity: 1;
     
 }
-.signin-btn{
+
+#pass-text{
     position: relative;
-    top: 530.5px;
-left:242.54px;
+    top: 383px;
+left: 135px;
+width: 322px;
+height: 27px;
+text-align: left;
+font: normal normal normal 17px/27px Open Sans;
+letter-spacing: 0.6px;
+color: #77838F;
+opacity: 1;
+}
+.signin-signin-btn{
+    position: absolute;
+    top: 530px;
+left: 242px;
 width: 150px;
 height: 50px;
-background: #4552C1 0% 0% no-repeat padding-box;
+background: #5861AE 0% 0% no-repeat padding-box;
 border-radius: 4px;
-opacity: 1;
-text-align: center;
-font: normal normal bold 15px/20px Open Sans;
-letter-spacing: 0.3px;
 color: #FFFFFF;
+font-size: larger;
 opacity: 1;
 }
 .mobile-email{
@@ -169,6 +270,7 @@ opacity: 1;
 }
 .footer-img{
     position: absolute;
+    display: inline-block;
     top: 919px;
 left: 0px;
 width: 1440px;
@@ -178,7 +280,7 @@ opacity: 1;
 }
 #door{
     position: relative;
-    top: -127px;
+    top: -140px;
 left: 137px;
 width: 251px;
 height: 20px;
@@ -222,4 +324,99 @@ opacity: 1;
 .text{
     position: relative;
     top: 10px;
+}
+#foot-home{
+    position: relative;
+    top: -228px;
+left: 566px;
+width: 44px;
+height: 22px;
+text-align: center;
+font: normal normal medium 16px/24px Avenir;
+letter-spacing: 0.16px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+
+#foot-signin{
+    position: relative;
+    top: -222px;
+left: 566px;
+width: 44px;
+height: 19px;
+text-align: left;
+font: normal normal normal 14px/24px Avenir;
+letter-spacing: 0.14px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+#foot-regi{
+    position: relative;
+    top: -218px;
+left: 566px;
+width: 52px;
+height: 19px;
+text-align: left;
+font: normal normal normal 14px/24px Avenir;
+letter-spacing: 0.14px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+#foot-price{
+    position: relative;
+    top: -332px;
+left: 687px;
+width: 44px;
+height: 22px;
+text-align: center;
+font: normal normal medium 16px/24px Avenir;
+letter-spacing: 0.16px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+.foot-carrer{
+   position: relative;
+top: -370px;
+left: 831px;
+width: 50px;
+height: 22px;
+text-align: center;
+font: normal normal medium 16px/24px Avenir;
+letter-spacing: 0.16px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+#foot-contact{
+    display: block;
+    position: relative;
+    top: -393px;
+left: 944px;
+width: 58px;
+height: 22px;
+/* UI Properties */
+text-align: center;
+font: normal normal medium 16px/24px Avenir;
+letter-spacing: 0.16px;
+color: #182838;
+text-transform: capitalize;
+opacity: 1;
+}
+#foot-sm{
+    position: relative;
+    top: -430px;
+left: 1105px;
+width: 130px;
+height: 25px;
+text-align: center;
+font: normal normal medium 18px/24px Avenir;
+letter-spacing: 0.18px;
+color: #182838;
+font-weight: bolder;
+text-transform: uppercase;
+opacity: 1;
 }
