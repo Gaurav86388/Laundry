@@ -6,6 +6,7 @@ export  const inputfieldsArray = [
      [{value:"Confirm Password", type:'password'}]]
 
    export  const indianStates = [
+        '',
         'Andhra Pradesh',
         'Arunachal Pradesh',
         'Assam',
@@ -43,6 +44,7 @@ export  const inputfieldsArray = [
       ];
       
       export const indianDistricts = {
+        "": [],
         'Andhra Pradesh': ['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna'],
         'Arunachal Pradesh': ['Tawang', 'West Kameng', 'East Kameng', 'Papum Pare', 'Kurung Kumey'],
         'Assam': ['Baksa', 'Barpeta', 'Biswanath', 'Cachar', 'Charaideo'],

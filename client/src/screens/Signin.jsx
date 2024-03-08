@@ -1,96 +1,136 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Button from '../components/Button'
-import "./SignIn.css"
-import footerImg from '/Footer.png'
-import fb from '/facebook.png'
-import insta from '/instagram.png'
-import linkedin from '/linkedin.png'
-import lock from '/padlock.png'
-
+import React from "react";
+import Navbar from "../components/Navbar";
+import Button from "../components/Button";
+import "./SignIn.css";
+import footerImg from "/Footer.png";
+import fb from "/facebook.png";
+import insta from "/instagram.png";
+import linkedin from "/linkedin.png";
+import lock from "/padlock.png";
+import { Link } from "react-router-dom";
 const Signin = () => {
   return (
-    <div className='signin'>
+    <div className="signin">
+      <div className="top">
         <Navbar />
-        <div className="signin-left">
+      </div>
 
-            <h1 className='signin-left-title'><span> Laundry</span><br/><span>Service</span></h1>
-            <h4 className='door'>Doorstep Wash & Dryclean Service</h4>
+      <div className="middle">
+                            <div className="signin-left">
+                                        <div className="signin-left-upper">
+                                            <h1 className="signin-left-title">
+                                            <span> Laundry</span>
+                                            <br />
+                                            <span>Service</span>
+                                            </h1>
+                                            <h4 className="door">Doorstep Wash & Dryclean Service</h4>
+                                        </div>
 
-            <div >
-                <p id='register-text'>Don't Have An Account?</p>
-                <Button classname='reg-register-btn' buttonName="Register" link="/register"/>
-            </div>
+                                        <div className="signin-left-lower">
+                                            <p id="register-text">Don't Have An Account?</p>
+                                            <Button
+                                            classname="reg-register-btn"
+                                            buttonName="Register"
+                                            link="/register"
+                                            />
+                                        </div>
+                             </div>
 
+                            <div className="signin-right">
+                                        
+                            <h1 className="signin-right-title">SIGN IN</h1>
+
+                                <form action="" className="signin-form">
+                                    
+                                        <div className="input-data">
+                                            
+                                            <label htmlFor="mobile-email">Mobile / Email</label>
+                                            <input type="text" required />
+                                       
+                                    </div>
+                                   
+                                    <div className="input-data">
+                                        
+                                        <label htmlFor="password">Password</label>
+                                        <input type="password" required />
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div className="lock">
+                                        <img src={lock} alt="lock"/>
+                                        </div>
+                                    
+                                    <Link to="/" id='forget-link'> Forget Password ?</Link>
+
+                                    <Button buttonName="Sign In" classname="signin-signin-btn" />
+                                </form>
+                            </div>
         </div>
 
-        <div className="signin-right">
+        <div className="bottom">
+                                        <div className="refer">
+                                        <p className="refer-text">
+                                            Now Refer & Earn ₹500 for every referral*
+                                        </p>
+                                        <p className="TandC">* Terms and conditions will be applied</p>
+                                        </div>
 
-            <h2 id="Signin-head">SIGN IN</h2>
+                                <div className="footer-up">
+                                    <div className="bg-img"> <img src={footerImg} alt="bg-image"/></div>
+                              
+                                <div id="about">
+                                    <b>ABOUT US</b>
+                                    <p>Doorstep Wash & Dryclean Service</p>
 
-            <form action="">
-                <div className='wrapper'>
-                    <div className='input-data'>
-                        <input  type="text" required/>
-                        <label  htmlFor="mobile-email">Mobile/Email</label>
-                    </div> 
-                </div>
-                <div className='wrapper-pass'>
-                    <div className='input-data-pass'>
-                        <input  type="password" required/>
-                        <label  htmlFor="password">Password</label>
-                    </div>
-                </div>
-                <img src={lock} alt="lock" id='lock'/>
-                <input type="url" name="forget-password" id="forget-password" value="Forget Password?"/>
+                                </div>
+                                
+                                
 
-                <Button buttonName="Sign In"classname='signin-signin-btn'/>
-            </form>
+                                <div id="foot-home">
+                                    <b>Home</b>
+                                    <p>Sign In</p>
+                                    <p>Register</p>
 
+                                </div>
+                                
+                                <div id="foot-price">
+                                    <b>Pricing</b>
+                                </div>
+
+                                <div className="foot-carrier">
+                                 
+                                    <b>Carrier</b>                       
+                                    <p>Blogs</p>
+                                    <p>Create</p>
+                                </div>
+
+                                <div id="foot-contact">
+                                    <b>Contact</b>
+                                </div>
+
+                                <div id="foot-sm">
+                                   <b>SOCIAL MEDIA</b> 
+                                   <div className="foot-sm-icons">
+
+                                            <img src={fb} alt="fb logo" />
+                                            <img src={insta} alt="insta logo" />
+                                            <img src={linkedin} alt="linkedin logo" />
+
+                                   </div>
+                                    
+                                </div>
+
+                                </div>
+                            <div className="footer-down">
+                            
+                                <p>2021 &copy; Laundry</p>
+                              
+                            </div>
         </div>
-        
-        <div className='refer'>
-            <p className='refer-text'>Now Refer & Earn ₹500 for every referral*</p>
-            <p className='TandC'>* Terms and conditions will be applied</p>
-        </div>
-
-        <div className='footer-img'>
-            <img src={footerImg} alt="footer image"/>
-            <p id='about'><b>About us</b></p><br/>
-            <p id='door'>Doorstep Wash & Dryclean Service</p>
-            
-                <p id="foot-home"><b>Home</b></p>
-                <p id="foot-signin">Sign In</p>
-                <p id="foot-regi">Register</p>
-
-                <div id='foot-price'>
-                    <b>Pricing</b>
-                </div>
-
-                <div className='foot-carrer'>
-                    <p id="foot-carrer"><b>Carrer</b></p>
-                    <p id="foot-blogs">Blogs</p>
-                    <p id="foot-create">Create</p>
-                </div>
-
-                <div id='foot-contact'>
-                    <b>Contact</b>
-                </div>
-
-                <p id='foot-sm'>SOCIAL MEDIA</p>
-                <img src={fb} alt="fb logo" id='fb'/>
-                <img src={insta} alt="insta logo" id='insta'/>
-                <img src={linkedin} alt="linkedin logo" id='linkedin'/>
-                
-           
-        </div>
-        <div className='footer'>
-          <div className='text'><span>2021 </span><span>&copy; </span><span>Laundry</span></div>  
-        </div>
-        
-
+      
     </div>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;

@@ -10,34 +10,43 @@ import insta from '/instagram.png'
 import linkedin from '/linkedin.png'
 
 const Register = () => {
-  const [stateName, setStateName] = useState("Assam");
+  const [stateName, setStateName] = useState("");
 
   function handleStateName(e) {
     setStateName(e.target.value);
   }
   return (
     <div className="register">
-      <Navbar />
-      <div className="register-left">
-        <h1 className="register-left-title">
-          <span> Laundry</span>
-          <br />
-          <span>Service</span>
-        </h1>
-        <h4>
-          <span>Doorstep Wash &</span><br/> <span>Dryclean Service</span>
-        </h4>
-
-        <div >
-          <p className="register-text">Already Have Account</p>
-          <Button classname="signin-btn" buttonName="Sign In" link="/"/>
-        </div>
+      <div className="top">
+        <Navbar />
       </div>
 
-      <div className="register-right">
-        <h2>REGISTER</h2>
+      <div className="middle">
+      <div className="register-left">
+                                        <div className="register-left-upper">
+                                            <h1 className="register-left-title">
+                                            <span> Laundry</span>
+                                            <br />
+                                            <span>Service</span>
+                                            </h1>
+                                            <h4 className="register-door">Doorstep Wash & <br></br>Dryclean Service</h4>
+                                        </div>
 
-        <form action="">
+                                        <div className="register-left-lower">
+                                            <p id="register-text">Don't Have An Account?</p>
+                                            <Button
+                                            classname="reg-register-btn"
+                                            buttonName="Sign In"
+                                            link="/"
+                                            />
+                                        </div>
+                             </div>
+
+
+          <div className="register-right">
+        <h2 className="register-right-title">REGISTER</h2>
+
+        <form action="" className="register-form">
           {inputfieldsArray.map((item, index) => {
             let label1,
               type1,
@@ -109,49 +118,76 @@ const Register = () => {
               I agree to Terms & Condition receiving marketing and promotional
               materials
             </p>
+            
           </div>
 
           <Button buttonName="Register" classname="register-btn" />
         </form>
       </div>
 
-      <div className="refer">
-        <p className="refer-text">Now Refer & Earn ₹500 for every referral*</p>
-        <p className="TandC">* Terms and conditions will be applied</p>
       </div>
 
-      <div className="footer-img">
-        <img src={footerImg} alt="footer image" />
-        <p id='about'><b>About us</b></p><br/>
-            <p id='door'>Doorstep Wash & Dryclean Service</p>
-            
-                <p id="foot-home"><b>Home</b></p>
-                <p id="foot-signin">Sign In</p>
-                <p id="foot-regi">Register</p>
+      <div className="bottom">
+                                        <div className="refer">
+                                        <p className="refer-text">
+                                            Now Refer & Earn ₹500 for every referral*
+                                        </p>
+                                        <p className="TandC">* Terms and conditions will be applied</p>
+                                        </div>
 
-                <div id='foot-price'>
-                    <b>Pricing</b>
-                </div>
+                                <div className="footer-up">
+                                    <div className="bg-img"> <img src={footerImg} alt="bg-image"/></div>
+                              
+                                <div id="about">
+                                    <b>ABOUT US</b>
+                                    <p>Doorstep Wash & Dryclean Service</p>
 
-                <div className='foot-carrer'>
-                    <p id="foot-carrer"><b>Carrer</b></p>
-                    <p id="foot-blogs">Blogs</p>
-                    <p id="foot-create">Create</p>
-                </div>
+                                </div>
+                                
+                                
 
-                <div id='foot-contact'>
-                    <b>Contact</b>
-                </div>
+                                <div id="foot-home">
+                                    <b>Home</b>
+                                    <p>Sign In</p>
+                                    <p>Register</p>
 
-                <p id='foot-sm'>SOCIAL MEDIA</p>
-                <img src={fb} alt="fb logo" id='fb'/>
-                <img src={insta} alt="insta logo" id='insta'/>
-                <img src={linkedin} alt="linkedin logo" id='linkedin'/>
-      </div>
+                                </div>
+                                
+                                <div id="foot-price">
+                                    <b>Pricing</b>
+                                </div>
 
-      <div className='footer'>
-          <div className='text'><span>2021 </span><span>&copy; </span><span>Laundry</span></div>  
+                                <div className="foot-carrier">
+                                 
+                                    <b>Carrier</b>                       
+                                    <p>Blogs</p>
+                                    <p>Create</p>
+                                </div>
+
+                                <div id="foot-contact">
+                                    <b>Contact</b>
+                                </div>
+
+                                <div id="foot-sm">
+                                   <b>SOCIAL MEDIA</b> 
+                                   <div className="foot-sm-icons">
+
+                                            <img src={fb} alt="fb logo" />
+                                            <img src={insta} alt="insta logo" />
+                                            <img src={linkedin} alt="linkedin logo" />
+
+                                   </div>
+                                    
+                                </div>
+
+                                </div>
+                            <div className="footer-down">
+                            
+                                <p>2021 &copy; Laundry</p>
+                              
+                            </div>
         </div>
+
     </div>
   );
 };

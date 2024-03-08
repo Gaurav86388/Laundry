@@ -1,10 +1,10 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import router from './Router/Router';
+import router from './Router/Router.js';
 const app = express()
 
-const mongoDBURL ="mongodb+srv://pratikbulkunde03:pratik@cluster0.enkdn1t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongoDBURL ="mongodb://localhost/laundry"
 
 app.use(bodyParser.json())
 app.use(express.json());

@@ -1,11 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
 import './Navbar.css'
 
 const Navbar = () => {
 
     const navNames = ["Home", "Pricing", "Career", "Sign In"]
-    const navLinks = ["/home", "/pricing", "/career", "/signin"]
 
   return (
     <div className="nav">
@@ -14,7 +13,8 @@ const Navbar = () => {
 
         <ul className='links' type="none">
             {navNames.map((item, index)=>{
-                return <li id='link-list-items' key={index} >{item}</li>
+                const linkid = index === navNames.length-1 ? 'link-list-items-last' :'link-list-items'
+                return <li id={linkid} key={index} >{item}</li>
             })}
        
         </ul>
