@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import "./SignIn.css"
-import footerImg from '/Footer@2x.png'
+import footerImg from '/Footer.png'
 
 const Signin = () => {
   return (
@@ -44,6 +44,11 @@ const Signin = () => {
 
         <div className='footer-img'>
             <img src={footerImg} alt="footer image"/>
+            <span id='about'>About us</span><br/>
+            <span id='door'>Doorstep Wash & Dryclean Service</span>
+        </div>
+        <div className='footer'>
+          <div className='text'><span>2021 </span><span>&copy; </span><span>Laundry</span></div>  
         </div>
 
     </div>
