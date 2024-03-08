@@ -5,6 +5,9 @@ import { inputfieldsArray, indianStates, indianDistricts } from "./fieldsArray";
 import footerImg from "/Footer.png";
 import { useState } from "react";
 import './Register.css'
+import fb from '/facebook.png'
+import insta from '/instagram.png'
+import linkedin from '/linkedin.png'
 
 const Register = () => {
   const [stateName, setStateName] = useState("Assam");
@@ -141,6 +144,9 @@ const Register = () => {
                 </div>
 
                 <p id='foot-sm'>SOCIAL MEDIA</p>
+                <img src={fb} alt="fb logo" id='fb'/>
+                <img src={insta} alt="insta logo" id='insta'/>
+                <img src={linkedin} alt="linkedin logo" id='linkedin'/>
       </div>
 
       <div className='footer'>

@@ -55,7 +55,8 @@ opacity: 1;
     border-radius: 4px;
     opacity: 1;
     text-align: center;
-font: normal normal bold 15px/20px Open Sans;
+    font-size: larger;
+    border: none;
 letter-spacing: 0.3px;
 color: #FFFFFF;
 }
@@ -122,6 +123,7 @@ background-color: #FFFFFF;
 color: #5861AE;
 border: 2px solid #5861AE;
 border-radius: 4px;
+font-size: larger;
 opacity: 1;
 }
 .footer{

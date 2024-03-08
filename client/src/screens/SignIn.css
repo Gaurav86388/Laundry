@@ -1,5 +1,4 @@
 
-
 .signin{
     /* Layout Properties */
 top: 0px;
@@ -82,7 +81,7 @@ opacity: 1;
     width: 450px;
     padding: 30px;
     top: 299px;
-    left: 135px;
+    left: 105px;
 
 }
 .wrapper .input-data{
@@ -95,6 +94,8 @@ opacity: 1;
     height: 100%;
     width: 100%;
     border: none;
+    outline: none;
+    letter-spacing: 2px;
     font-size: 17px;
     background: transparent;
     border-bottom: 3px solid #565657;
@@ -121,7 +122,7 @@ opacity: 1;
     width: 450px;
     padding: 30px;
     top: 400px;
-    left: 135px;
+    left: 105px;
 
 }
 .wrapper-pass .input-data-pass{
@@ -129,12 +130,15 @@ opacity: 1;
     width: 100%;
     position: relative;
     
+    
 }
 .wrapper-pass .input-data-pass input{
     height: 100%;
     width: 100%;
     border: none;
+    outline: none;
     font-size: 17px;
+    letter-spacing: 8px;
     background: transparent;
     border-bottom: 3px solid #565657;
 }
@@ -201,6 +205,7 @@ width: 150px;
 height: 50px;
 background: #5861AE 0% 0% no-repeat padding-box;
 border-radius: 4px;
+border: none;
 color: #FFFFFF;
 font-size: larger;
 opacity: 1;
@@ -419,4 +424,43 @@ color: #182838;
 font-weight: bolder;
 text-transform: uppercase;
 opacity: 1;
+}
+#forget-password{
+    position: absolute;
+    top: 475px;
+left: 470px;
+width: 140px;
+height: 22px;
+text-align: left;
+font: normal normal medium 16px/26px Avenir;
+letter-spacing: 0.64px;
+color: #4552C1;
+text-transform: capitalize;
+opacity: 1;
+border: none;
+outline: none;
+background-color: transparent;
+}
+#fb{
+    position: absolute;
+    top: 95px;
+    left: 1116px;
+
+}
+#insta{
+    position: absolute;
+    top: 95px;
+    left: 1150px;
+
+}
+#linkedin{
+    position: absolute;
+    top: 96px;
+    left: 1186px;
+
+}
+#lock{
+    position: absolute;
+    top:  442px;
+    left: 571px;
 }

@@ -3,6 +3,10 @@ import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import "./SignIn.css"
 import footerImg from '/Footer.png'
+import fb from '/facebook.png'
+import insta from '/instagram.png'
+import linkedin from '/linkedin.png'
+import lock from '/padlock.png'
 
 const Signin = () => {
   return (
@@ -33,10 +37,11 @@ const Signin = () => {
                 </div>
                 <div className='wrapper-pass'>
                     <div className='input-data-pass'>
-                        <input  type="text" required/>
+                        <input  type="password" required/>
                         <label  htmlFor="password">Password</label>
                     </div>
                 </div>
+                <img src={lock} alt="lock" id='lock'/>
                 <input type="url" name="forget-password" id="forget-password" value="Forget Password?"/>
 
                 <Button buttonName="Sign In"classname='signin-signin-btn'/>
@@ -73,6 +78,9 @@ const Signin = () => {
                 </div>
 
                 <p id='foot-sm'>SOCIAL MEDIA</p>
+                <img src={fb} alt="fb logo" id='fb'/>
+                <img src={insta} alt="insta logo" id='insta'/>
+                <img src={linkedin} alt="linkedin logo" id='linkedin'/>
                 
            
         </div>
