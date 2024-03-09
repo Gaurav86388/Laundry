@@ -1,13 +1,14 @@
 import React from "react";
 import "./CreateOrder.css";
 import Button from "../components/Button";
+
+import Maintop from "../components/Maintop";
 const CreateOrder = () => {
   return (
     <>
-      <div className="main-top">
-        <h2 id="main-top-title">Orders | 0</h2>
-      </div>
-
+     
+          <Maintop />
+        
       <div className="main-center">
         <p>No Orders available</p>
 

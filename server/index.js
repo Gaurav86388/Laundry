@@ -1,15 +1,19 @@
 import express from 'express'
 import mongoose from 'mongoose';
+
 import bodyParser from 'body-parser';
-import router from './Router/Router.js';
+
+import UserRouter from './Router/UserRouter.js';
+import cors from 'cors';
 const app = express()
 
 const mongoDBURL ="mongodb://localhost/laundry"
 
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json());
+app.use(cors())
 
-const PORT = "8080";
+const PORT = "3000";
 
 async function main(){
 
@@ -20,7 +24,7 @@ async function main(){
         console.log(e)
     }
 
-    app.use("/", router)
+    app.use("/", UserRouter)
 
     
 

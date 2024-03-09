@@ -1,8 +1,12 @@
 import React from 'react'
-
+import Maintop from '../components/Maintop'
+import "./Service.css"
 const Service = () => {
   return (
-    <div>Service</div>
+    <>
+    <Maintop />
+    <div className="main-center"></div>
+    </>
   )
 }
 

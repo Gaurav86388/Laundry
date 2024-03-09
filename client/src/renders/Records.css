@@ -1,0 +1,10 @@
+.main-center{
+    align-self: center;
+    width: 200px;
+    margin: 15% 0 27% 0;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Navbar from '../components/Navbar'
 import Aside from '../components/Aside'
 import "./Home.css"
@@ -8,10 +8,14 @@ import Footer from '../components/Footer'
 import CreateOrder from '../renders/CreateOrder'
 import Records from '../renders/Records'
 import Service from '../renders/Service'
+import { useRender } from '../Context'
+
 const navNames = ["Pricing", "Career", "Username"]
+
 const Home = () => {
 
-  const [render, setRender] = useState('createOrder')
+  const {render} = useRender()
+ 
 
   return (
     <div className='home'>
@@ -20,7 +24,7 @@ const Home = () => {
       </div>
       <div className="middle">
 
-            <Aside handleRender={setRender}/>
+            <Aside/>
             <div className="main">
 
                {render === 'createOrder' && <CreateOrder />}

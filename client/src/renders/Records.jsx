@@ -1,8 +1,14 @@
 import React from 'react'
+import './Records.css'
+import Maintop from '../components/Maintop'
+
 
 const Records = () => {
   return (
-    <div>Records</div>
+    <>
+    <Maintop />
+    <div className="main-center"></div>
+    </>
   )
 }
 

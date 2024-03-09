@@ -4,13 +4,10 @@ import home_icon from '../assets/home_icons/light-home-run.png'
 import list_icon from '../assets/home_icons/light-list.png'
 import more_icon from '../assets/home_icons/light-more.png'
 import "./Aside.css"
+import { useRender } from '../Context'
+const Aside = () => {
+const {onHandleRender} = useRender()
 
-const Aside = ({handleRender}) => {
-
-  function onHandleRender(command){
-
-    handleRender(command)
-  }
   return (
     <div className="aside">
 
