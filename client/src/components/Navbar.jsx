@@ -2,9 +2,9 @@ import React from 'react'
 
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({navNames}) => {
 
-    const navNames = ["Home", "Pricing", "Career", "Sign In"]
+   
 
   return (
     <div className="nav">

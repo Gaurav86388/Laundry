@@ -1,13 +1,15 @@
 import React from "react";
+import { useState } from "react";
+
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
+import Footer from "../components/Footer";
+import Banner from "../components/Banner";
+
 import { inputfieldsArray, indianStates, indianDistricts } from "./fieldsArray";
-import footerImg from "/Footer.png";
-import { useState } from "react";
 import './Register.css'
-import fb from '/facebook.png'
-import insta from '/instagram.png'
-import linkedin from '/linkedin.png'
+
+const navNames = ["Home", "Pricing", "Career", "Sign In"]
 
 const Register = () => {
   const [stateName, setStateName] = useState("");
@@ -18,7 +20,7 @@ const Register = () => {
   return (
     <div className="register">
       <div className="top">
-        <Navbar />
+        <Navbar navNames={navNames}/>
       </div>
 
       <div className="middle">
@@ -128,64 +130,8 @@ const Register = () => {
       </div>
 
       <div className="bottom">
-                                        <div className="refer">
-                                        <p className="refer-text">
-                                            Now Refer & Earn ₹500 for every referral*
-                                        </p>
-                                        <p className="TandC">* Terms and conditions will be applied</p>
-                                        </div>
-
-                                <div className="footer-up">
-                                    <div className="bg-img"> <img src={footerImg} alt="bg-image"/></div>
-                              
-                                <div id="about">
-                                    <b>ABOUT US</b>
-                                    <p>Doorstep Wash & Dryclean Service</p>
-
-                                </div>
-                                
-                                
-
-                                <div id="foot-home">
-                                    <b>Home</b>
-                                    <p>Sign In</p>
-                                    <p>Register</p>
-
-                                </div>
-                                
-                                <div id="foot-price">
-                                    <b>Pricing</b>
-                                </div>
-
-                                <div className="foot-carrier">
-                                 
-                                    <b>Carrier</b>                       
-                                    <p>Blogs</p>
-                                    <p>Create</p>
-                                </div>
-
-                                <div id="foot-contact">
-                                    <b>Contact</b>
-                                </div>
-
-                                <div id="foot-sm">
-                                   <b>SOCIAL MEDIA</b> 
-                                   <div className="foot-sm-icons">
-
-                                            <img src={fb} alt="fb logo" />
-                                            <img src={insta} alt="insta logo" />
-                                            <img src={linkedin} alt="linkedin logo" />
-
-                                   </div>
-                                    
-                                </div>
-
-                                </div>
-                            <div className="footer-down">
-                            
-                                <p>2021 &copy; Laundry</p>
-                              
-                            </div>
+        <Banner />
+        <Footer />
         </div>
 
     </div>

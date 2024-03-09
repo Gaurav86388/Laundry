@@ -1,0 +1,12 @@
+.aside{
+    width: 5%;
+    background-color: #5861AE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.aside-icons{
+    margin-top: 50px;
+}
