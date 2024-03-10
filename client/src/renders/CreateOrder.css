@@ -1,15 +1,13 @@
 
-.main-center{
+.main-center-order{
     align-self: center;
-    width: 200px;
     margin: 15% 0 27% 0;
     display: flex;
     flex-direction: column;
-
     align-items: center;
 
 }
-.main-center p{
+.main-center-order p{
     color: rgb(112, 128, 144, 0.8);
     font-size: 22px;
     margin-bottom: 15px;

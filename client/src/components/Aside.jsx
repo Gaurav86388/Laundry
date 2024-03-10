@@ -3,14 +3,11 @@ import {Link} from 'react-router-dom'
 import { useRender } from '../Context'
 import "./Aside.css"
 
-import dark_home from "../assets/home_icons/dark-home-run.png"
-import dark_more from "../assets/home_icons/dark-more.png"
-import dark_list from "../assets/home_icons/dark-list.png"
+import {asideIcons} from "../imageimports.js"
 
-import light_home from "../assets/home_icons/light-home-run.png"
-import light_more from "../assets/home_icons/light-more.png"
-import light_list from "../assets/home_icons/light-list.png"
 
+
+const [ dark_home, dark_more, dark_list, light_home, light_more, light_list ] = asideIcons
 
 const Aside = () => {
 const {render, onHandleRender} = useRender()

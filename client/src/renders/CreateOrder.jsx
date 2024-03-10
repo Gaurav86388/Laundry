@@ -9,13 +9,13 @@ const CreateOrder = () => {
      
           <Maintop />
         
-      <div className="main-center">
+      <div className="main-center-order">
         <p>No Orders available</p>
 
         <Button
           classname="home-create-btn"
           buttonName="Create"
-          link="/createorder"
+
         />
       </div>
     </>

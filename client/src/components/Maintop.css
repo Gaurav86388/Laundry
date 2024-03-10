@@ -1,6 +1,6 @@
 
 .main-top{
-    padding: 44px 50px 0 50px;
+    padding: 60px 50px 0 50px;
 
     display: flex;
     justify-content: space-between;
@@ -11,6 +11,12 @@
     font-size: 28px;
 
 }
+
+.main-top-create{
+    margin-left: 65%;
+}
+
+
 .main-top-searchbar{
 
     display: flex;
