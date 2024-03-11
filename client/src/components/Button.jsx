@@ -4,10 +4,10 @@ import { useRender } from '../Context'
 
 
 
-const Button = ({buttonName, classname, link, handleQuantity, handleRate, handleResetState}) => {
+const Button = ({buttonName, classname, link="", handleQuantity, handleRate, handleResetState, btnType}) => {
 
 
-  const {onHandleRender} = useRender()
+  const {onHandleRender, setShowAlert} = useRender()
 
 
     function handleReset(){
@@ -29,11 +29,21 @@ const Button = ({buttonName, classname, link, handleQuantity, handleRate, handle
       if(buttonName ==="Create"){
         onHandleRender("service")
       }
+      if(buttonName === "Go Back" || buttonName === "Go to Sign in"){
+        setShowAlert("")
+      }
 
     }
   return (
     <div>
-        <Link to={link}><input type="button" value={buttonName} className={classname} onClick={handleOnClick}/></Link>
+      {btnType === "submit" ? 
+          <input type="submit" value={buttonName} className={classname}/>
+      : 
+      <Link to={link}> <input type="button" value={buttonName} className={classname} onClick={handleOnClick}/></Link>
+      }
+
+        
+        
     </div>
   )
 }

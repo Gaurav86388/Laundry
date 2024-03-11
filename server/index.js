@@ -7,7 +7,7 @@ import UserRouter from './Router/UserRouter.js';
 import cors from 'cors';
 const app = express()
 
-const mongoDBURL ="mongodb://localhost/laundry"
+const mongoDBURL ="mongodb://localhost/laundryapp"
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json());

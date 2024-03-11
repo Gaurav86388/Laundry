@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import "./SignIn.css";
@@ -10,6 +10,40 @@ import Footer from "../components/Footer";
 
 const navNames = ["Home", "Pricing", "Career", "Sign In"]
 const Signin = () => {
+
+  const [signinDetails, setSigninDetails] = useState({
+    Userkey: "",
+    Password: ""
+  })
+
+function handleSigninForm(e){
+
+  e.preventDefault()
+console.log(signinDetails)
+  fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(signinDetails)
+  })
+.then((res)=>res.json())
+.then(data=>{
+  console.log(data)
+ 
+  
+  
+})
+.catch(e=>console.log(e))
+
+}
+
+function handleOnChange(e){
+let name = e.target.name
+let value = e.target.value
+
+setSigninDetails(prev=>({...prev, [name]: value}))
+}
   return (
     <div className="signin">
       <div className="top">
@@ -30,7 +64,7 @@ const Signin = () => {
                                         <div className="signin-left-lower">
                                             <p id="register-text">Don't Have An Account?</p>
                                             <Button
-                                            classname="reg-register-btn"
+                                            classname="signin-register-btn"
                                             buttonName="Register"
                                             link="/register"
                                             />
@@ -41,19 +75,19 @@ const Signin = () => {
                                         
                             <h1 className="signin-right-title">SIGN IN</h1>
 
-                                <form action="" className="signin-form">
+                                <form className="signin-form" onSubmit={handleSigninForm}>
                                     
                                         <div className="input-data">
                                             
-                                            <label htmlFor="mobile-email">Mobile / Email</label>
-                                            <input type="text" required />
+                                            <label htmlFor="Userkey">Mobile / Email</label>
+                                            <input name="Userkey" type="text" required onChange={handleOnChange}/>
                                        
                                     </div>
                                    
                                     <div className="input-data">
                                         
-                                        <label htmlFor="password">Password</label>
-                                        <input type="password" required />
+                                        <label htmlFor="Password" >Password</label>
+                                        <input name = "Password" type="password" required onChange={handleOnChange}/>
                                         
                                         
                                         
@@ -64,7 +98,7 @@ const Signin = () => {
                                     
                                     <Link to="/" id='forget-link'> Forget Password ?</Link>
 
-                                    <Button buttonName="Sign In" classname="signin-signin-btn" />
+                                    <Button buttonName="Sign In" classname="signin-signin-btn" btnType="submit"/>
                                 </form>
                             </div>
         </div>

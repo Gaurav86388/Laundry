@@ -85,7 +85,7 @@
         color: #565657;
     }
     
-    .reg-register-btn{
+    .reg-signin-btn{
         
     width: 150px;
     height: 50px;
@@ -120,6 +120,7 @@
         flex-direction: column;
         align-items: center;
         gap: 50px;
+        position: relative;
     }
 
     .register-col{
@@ -181,6 +182,17 @@
         margin-right: 680px;
     }
     
+    #incorrect-pass{
+        color: #EF1A1A;
+        font-weight: 700;
+        align-self: start;
+        position: absolute;
+        top: 68%;
+        left: 45%;
+        font-family: "Open Sans", sans-serif;
+        
+        
+    }
     
   .agreement-box{
     display: flex;
@@ -195,7 +207,7 @@
     color: #5861AE;
   }
     
-    .register-btn{
+    .reg-register-btn{
     width: 150px;
     height: 50px;
     background: #5861AE 0% 0% no-repeat padding-box;

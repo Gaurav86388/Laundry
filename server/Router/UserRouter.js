@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { user } from "../database/UserSchema.js";
+import { users } from "../database/UserSchema.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -7,13 +7,11 @@ const salt_rounds = 10
 const secret = "sdfhsdfihsdfahsdfahsdifasdyqtoetqwncnczxmncvlafu"
 
 const router = Router()
-router.get('/', async(req, res)=>{
-    return res.status(200).send("Hello")
-});
 
-function validateUserkey(userkey){
 
-    if(!isNaN(userkey)){
+function validateUserkey(Userkey){
+
+    if(!isNaN(Userkey)){
         return "number"
     }
     else{
@@ -23,21 +21,21 @@ function validateUserkey(userkey){
 }
 router.post("/login", async(req, res)=>{
 
-    const {userkey, password} = req.body
-    console.log(userkey, password)
+    const {Userkey, Password} = req.body
+    console.log(Userkey, Password)
 
-    let typeofUserkey = validateUserkey(userkey)
+    let typeofUserkey = validateUserkey(Userkey)
     console.log(typeofUserkey)
 
-    const userFound  = typeofUserkey==="number"?  await user.findOne({phone: userkey})  :await user.findOne({email: userkey})
+    const userFound  = typeofUserkey==="number"?  await users.findOne({Phone: Userkey})  :await users.findOne({Email: Userkey})
     if(!userFound){
-        res.status(404).json({message:"failure"})
+        res.status(404).json({message:"Not Found"})
     }
    else{
 
-            const storedHashedPassword = userFound.password
+            const storedHashedPassword = userFound.Password
 
-            bcrypt.compare(password, storedHashedPassword, (err, result)=>{
+            bcrypt.compare(Password, storedHashedPassword, (err, result)=>{
 
                 if(err){
                     console.log(err)
@@ -49,7 +47,7 @@ router.post("/login", async(req, res)=>{
                         }
 
                         const accesstoken = jwt.sign(payload, secret)
-                        return res.status(200).json({status: "validated", token: accesstoken})
+                        return res.status(200).json({message: "validated", token: accesstoken})
                 }
 
             })
@@ -62,20 +60,20 @@ router.post("/login", async(req, res)=>{
 router.post("/register", async(req, res)=>{
 
     const registrationData = req.body
-    const {password} = req.body
+    const {Email, Password} = req.body
     console.log(registrationData)
     let existingUser
 
     try{
-        existingUser = await user.findOne({email: registrationData.email})
+        existingUser = await users.findOne({Email: Email})
     }
     catch(e){
         console.log(e)
     }
 
-    if(existingUser) return res.status(400).json({status: 'user already exists'})
+    if(existingUser) return res.status(400).json({message: 'User already exists.'})
 
-    bcrypt.hash(password, salt_rounds, async(err, hash)=>{
+    bcrypt.hash(Password, salt_rounds, async(err, hash)=>{
 
         if(err){
             console.log(err)
@@ -85,16 +83,16 @@ router.post("/register", async(req, res)=>{
             let records
 
             try{
-                records = await user.create({...registrationData, password: hash})
+                records = await users.create({...registrationData, Password: hash})
                 
                 }
             
             catch(e){
-                return res.status(500).json({message: "Server Error", e})
+                return res.status(500).json({message: "Server Error.", error: e.message})
             }
         
             if(records){
-                return res.status(200).json({message: "Success", records})
+                return res.status(200).json({message: "You have registered succesfully.", records})
             }
         }
     

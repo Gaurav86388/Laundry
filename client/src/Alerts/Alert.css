@@ -1,0 +1,43 @@
+
+.alert-overlay{
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+.alert{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    gap: 28px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.alert-img> img{
+    height: 100px;
+    width: 100px;
+}
+.alert-message>h1{
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 26px;
+
+}
+.alert-btn{
+width: 150px;
+height: 47px;
+background: #5861AE ;
+border-radius: 30px;
+border: none;
+color: #FFFFFF;
+font-size: large;
+
+}
