@@ -13,7 +13,7 @@ const [darkBleach, darkIron, darkTowel, darkWashingMachine
   {type : [darkBleach, lightBleach], cost: 70},
   ]
 
-    function GenerateWashIcons({darkicon, lighticon, cost, handleCost}){
+    function GenerateWashIcons({darkicon, lighticon, cost, handleCost,resetState, setResetState}){
   
       const [activeState, setActiveState] = useState(false)
   
@@ -22,10 +22,22 @@ const [darkBleach, darkIron, darkTowel, darkWashingMachine
         setActiveState(prev=>!prev)
         handleCost(cost, activeState)
       }
-    
+
+      useEffect(()=>{
+        function reset(){
+          setActiveState(false)
+        }
+
+        if(resetState){
+          reset()
+        }
+
+        return ()=>setResetState(false)
+      }, [resetState])
+      
   
       return  <div className='wash-type-icons'>          
-      <img src={activeState ? darkicon :lighticon} alt="icon images" onClick={()=>handleActiveState(cost) }/>
+      <img src={activeState ? darkicon : (resetState ? lighticon : lighticon)} alt="icon images" onClick={()=>handleActiveState(cost) }/>
       </div>
     }
   
@@ -35,7 +47,9 @@ export default function GenerateRows({cloth, cloth_title}){
     const [quantity, setQuantity] = useState(0)
     const [totalCost, setTotalCost] = useState(0)
     const [totalRate, setTotalRate] = useState(0)
-    const [activePrice, setActivePrice] = useState(true)
+    const [activePrice, setActivePrice] = useState(false)
+
+    const [resetState, setResetState] = useState(false)
 
     useEffect(()=>{
 
@@ -44,7 +58,7 @@ export default function GenerateRows({cloth, cloth_title}){
             setTotalCost(quantity *  totalRate)
        
         }
-        quantity > 0 || totalRate > 0 ? setActivePrice(true) : setActivePrice(false)
+        quantity > 0 && totalRate > 0 ? setActivePrice(true) : setActivePrice(false)
         calculateSum()
 
     }, [quantity, totalRate])
@@ -88,7 +102,8 @@ export default function GenerateRows({cloth, cloth_title}){
           const lighticon = item.type[1]
 
   
-          return <GenerateWashIcons key ={i}darkicon={darkicon} lighticon={lighticon} cost = {item.cost} handleCost={handleCost}/>
+          return <GenerateWashIcons key ={i}darkicon={darkicon} lighticon={lighticon} cost = {item.cost} handleCost={handleCost}
+          resetState={resetState} setResetState={setResetState}/>
         })}
         
       </td>
@@ -98,13 +113,13 @@ export default function GenerateRows({cloth, cloth_title}){
 
         <div className='price-text'>
   
-            {!activePrice && <h2 id="price-null">—</h2>}
+            {totalCost === 0 &&  !activePrice  && <h2 id="price-null">—</h2>}
             {totalCost > 0 && activePrice && <h2 id="price-cal">{quantity} x {totalRate} = <span id="price-total">{totalCost}</span></h2>}
 
             </div>
             {totalCost > 0 && activePrice &&
             <div className='reset-div'>
-            <Button buttonName="Reset" classname="price-reset-btn" handleQuantity = {setQuantity} handleRate={setTotalRate}/>
+            <Button buttonName="Reset" classname="price-reset-btn" handleQuantity = {setQuantity} handleRate={setTotalRate} handleResetState={setResetState}/>
             </div>
             }
 

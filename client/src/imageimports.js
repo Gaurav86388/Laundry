@@ -31,7 +31,7 @@ const asideIcons = [dark_home, dark_more, dark_list, light_home, light_more, lig
 const serviceList= [darkBleach, darkIron, darkTowel, darkWashingMachine
 , lightBleach, lightIron, lightTowel, lightWashingMachine]
 
-const clothes = [boxers, jeans, jogger, shirts, tShirts, trouser, others]
+const clothes = [shirts, tShirts, trouser, jeans, boxers, jogger, others]
 
 
 

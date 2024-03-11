@@ -4,15 +4,18 @@ import { useRender } from '../Context'
 
 
 
-const Button = ({buttonName, classname, link, handleQuantity, handleRate}) => {
+const Button = ({buttonName, classname, link, handleQuantity, handleRate, handleResetState}) => {
 
 
   const {onHandleRender} = useRender()
 
 
     function handleReset(){
+      handleResetState(true)
       handleQuantity(0)
       handleRate(0)
+   
+      
     }
 
     function handleOnClick(){
