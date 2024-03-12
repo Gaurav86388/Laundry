@@ -7,7 +7,7 @@ import { useRender } from '../Context'
 const Button = ({buttonName, classname, link="", handleQuantity, handleRate, handleResetState, btnType}) => {
 
 
-  const {onHandleRender, setShowAlert} = useRender()
+  const {onHandleRender, setShowAlert, setShowSummary} = useRender()
 
 
     function handleReset(){
@@ -31,6 +31,9 @@ const Button = ({buttonName, classname, link="", handleQuantity, handleRate, han
       }
       if(buttonName === "Go Back" || buttonName === "Go to Sign in"){
         setShowAlert("")
+      }
+      if(buttonName === "Proceed"){
+        setShowSummary(true)
       }
 
     }

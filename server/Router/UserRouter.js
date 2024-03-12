@@ -37,17 +37,20 @@ router.post("/login", async(req, res)=>{
 
             bcrypt.compare(Password, storedHashedPassword, (err, result)=>{
 
-                if(err){
-                    console.log(err)
+                if(err) return res.status(404).json({message:"Not Authorised"})
+                
+                if(result){
+                    const payload = {
+                        exp: Math.floor(Date.now()/1000) + 3600,
+                        data: userFound._id
+                    }
+
+                    const accesstoken = jwt.sign(payload, secret)
+                        res.cookie('jwt', accesstoken, { httpOnly: true, secure: true });
+                    return res.status(200).json({message: "validated"})
                 }
                 else{
-                        const payload = {
-                            exp: Math.floor(Date.now()/1000) + 3600,
-                            data: userFound._id
-                        }
-
-                        const accesstoken = jwt.sign(payload, secret)
-                        return res.status(200).json({message: "validated", token: accesstoken})
+                    res.status(401).json({ message: "Invalid password" });
                 }
 
             })

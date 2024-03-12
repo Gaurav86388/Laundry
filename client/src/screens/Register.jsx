@@ -8,7 +8,7 @@ import Banner from "../components/Banner";
 
 import { inputfieldsArray, indianStates, indianDistricts } from "./fieldsArray";
 import './Register.css'
-import Alert from "../Alerts/Alert";
+import Alert from "../Extra/Alert";
 
 const navNames = ["Home", "Pricing", "Career", "Sign In"]
 
@@ -68,6 +68,7 @@ const [checkMatchPassword, setCheckMatchPassword] = useState(true)
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(RegDetails)
       })
