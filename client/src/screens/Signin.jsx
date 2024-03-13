@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Loader from "../Extra/Loader";
+
 
 const navNames = ["Home", "Pricing", "Career", "Sign In"];
 const Signin = () => {

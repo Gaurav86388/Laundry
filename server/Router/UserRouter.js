@@ -46,8 +46,8 @@ router.post("/login", async(req, res)=>{
                     }
 
                     const accesstoken = jwt.sign(payload, secret)
-                        res.cookie('jwt', accesstoken, { httpOnly: true, secure: true });
-                    return res.status(200).json({message: "validated"})
+                        res.cookie('jwt', accesstoken, { httpOnly: false, sameSite: 'Lax'});
+                    return res.status(200).json({message: "validated", token: accesstoken})
                 }
                 else{
                     res.status(401).json({ message: "Invalid password" });
@@ -59,6 +59,8 @@ router.post("/login", async(req, res)=>{
     
 
 })
+
+
 
 router.post("/register", async(req, res)=>{
 
@@ -95,7 +97,7 @@ router.post("/register", async(req, res)=>{
             }
         
             if(records){
-                return res.status(200).json({message: "You have registered succesfully.", records})
+                return res.status(200).json({message: "Success register", records})
             }
         }
     
@@ -107,6 +109,34 @@ router.post("/register", async(req, res)=>{
     
 
 
+})
+
+function authenticateToken(req, res, next){
+
+    const authHeader = req.headers.authorization
+
+    const token = authHeader ? authHeader.split(" ")[1] : res.json({status: "where is the token man!"})
+ 
+    if(token === null) return res.sendStatus(401)
+
+    jwt.verify(token, secret, async(err, decoded)=>{
+        if(err) return console.log(err)
+
+        const userdata = await users.findOne({_id: decoded.data})
+
+        if(!userdata) return res.status(400).render("http://localhost:5173")
+        
+        req.userId = userdata._id
+
+        next()
+
+    })
+
+
+}
+
+router.get("/secret", authenticateToken, async(req, res)=>{
+    res.json({text: "hi"})
 })
 
 

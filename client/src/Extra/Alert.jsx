@@ -1,22 +1,63 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { createPortal } from "react-dom";
 
 import "./Alert.css";
 import tickImg from "/tick.png";
 import Button from "../components/Button";
 
+
+const alertMessages = {
+  order: {
+  heading :'Your order is successful',
+ message : 'You can track the delivery in the "Orders" section.',
+ btnName : 'Go to Orders'
+},
+
+regFail: {
+  heading :"Registration Unsuccessful.",
+  message : 'The email / phone you entered already exists.',
+  btnName : "Go back"
+},
+
+regPass: {
+  heading :"Registration Successful.",
+  message : 'Your account has been created.',
+  btnName : "Go to Sign in"
+}
+
+
+}
 const Alert = ({message}) => {
 
-  let btnText
-if (message === "User already exists."){
+ let heading, info, btnName
+  let link = ""
+
+if (message=== "User already exists."){
   
-  btnText = "Go Back"
+  
+  heading = alertMessages.regFail.heading
+  info = alertMessages.regFail.message
+  btnName = alertMessages.regFail.btnName
+  link = "/register"
+}
+else if (message === "Success register"){
+
+  heading = alertMessages.regPass.heading
+  info = alertMessages.regPass. message
+  btnName = alertMessages.regPass.btnName
+
+  link = "/"
 
 }
-else{
-  btnText = "Go to Sign in"
-}
 
+else if (message === "Confirm"){
+
+  heading = alertMessages.order.heading
+  info = alertMessages.order.message
+  btnName = alertMessages.order.btnName
+  
+
+}
 
 
   return createPortal(<>
@@ -27,10 +68,11 @@ else{
         </div>
 
         <div className="alert-message">
-          <h1>{message}</h1>
+          <h1>{heading}</h1>
+          <p>{info}</p>
         </div>
 
-        <Button buttonName={btnText} link={btnText === "Go Back" ? "/register" : "/"} classname="alert-btn" />
+        <Button buttonName={btnName} link={link} classname="alert-btn" />
       </div>
   </>, document.getElementById('modal')
    

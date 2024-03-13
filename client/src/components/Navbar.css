@@ -66,5 +66,7 @@ font-family: 'Roboto', sans-serif;
 .user-profile-pic{
     display: flex;
     justify-content: center;
-    margin-bottom: 8px;
+    margin-top: 16px;
+    margin-bottom: 22px;
+    
 }

@@ -3,7 +3,7 @@ import Register from "./screens/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import  RenderContextProvider  from "./Context";
-import Summary from "./components/Summary";
+import Alert from "./Extra/Alert";
 function App() {
   return (
     <RenderContextProvider>
@@ -12,7 +12,8 @@ function App() {
           <Route exact path="/" element={<Signin />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/home" element={<Home />} />
-          <Route exact path="/test" element={<Summary />} />
+          <Route exact path="/test" element={<Alert />} />
+          
         </Routes>
       </BrowserRouter>
     </RenderContextProvider>

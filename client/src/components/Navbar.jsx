@@ -17,22 +17,23 @@ const Navbar = ({navNames}) => {
                 
                     const profileid = index === navNames.length-1 && item==="Username" 
 
-                return <>
-                {profileid ?
-                  <li id={linkid + "-user"} key={index} >
-                  <div className='user-profile-pic'>
-                   <img src={profilepic} alt="profile-image"/>
-                  </div>
+                return <li key={index}>
+                  {profileid ?
+                  <div id={linkid + "-user"} key={index} >
+                        <div className='user-profile-pic'>
+                        <img src={profilepic} alt="profile-image"/>
+                        </div>
                   User Name
-                  </li>
+                  </div>
                   :
-                  <li id={linkid} key={index} >
+                  <div id={linkid} key={index} >
                   {item}
+                  </div>}
                   </li>
                  
-            }
+            
                  
-                  </>
+                 
             })}
        
         </ul>

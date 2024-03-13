@@ -2,25 +2,28 @@ import { serviceList } from "../imageimports"
 import Button from "../components/Button"
 import { useState, useEffect } from "react"
 
+
 const [darkBleach, darkIron, darkTowel, darkWashingMachine
     , lightBleach, lightIron, lightTowel, lightWashingMachine] = serviceList
   
-  let washType = [{
-    type: [darkWashingMachine, lightWashingMachine], cost: 50
-  },
-  {type : [darkIron, lightIron], cost: 30},
-  {type : [darkTowel, lightTowel], cost: 100},
-  {type : [darkBleach, lightBleach], cost: 70},
+
+  let washType = [
+    {type: [darkWashingMachine, lightWashingMachine], cost: 50, name: "Washing, "},
+  {type : [darkIron, lightIron], cost: 30, name: "Ironing, "},
+  {type : [darkTowel, lightTowel], cost: 100, name: "Towel, "},
+  {type : [darkBleach, lightBleach], cost: 70, name: "Bleach, "},
+  
   ]
 
-    function GenerateWashIcons({darkicon, lighticon, cost, handleCost,resetState, setResetState}){
+    function GenerateWashIcons({darkicon, lighticon, cost, handleCost,resetState, setResetState, servicename}){
   
       const [activeState, setActiveState] = useState(false)
+
   
-      function handleActiveState(cost){
+      function handleActiveState(cost, servicename){
     
         setActiveState(prev=>!prev)
-        handleCost(cost, activeState)
+        handleCost(cost, activeState, servicename)
       }
 
       useEffect(()=>{
@@ -37,12 +40,12 @@ const [darkBleach, darkIron, darkTowel, darkWashingMachine
       
   
       return  <div className='wash-type-icons'>          
-      <img src={activeState ? darkicon : (resetState ? lighticon : lighticon)} alt="icon images" onClick={()=>handleActiveState(cost) }/>
+      <img src={activeState ? darkicon : (resetState ? lighticon : lighticon)} alt="icon images" onClick={()=>handleActiveState(cost, servicename) }/>
       </div>
     }
   
 
-export default function GenerateRows({cloth, cloth_title}){
+export default function GenerateRows({cloth, cloth_title,updateLaundryCart, item_id, laundryCart}){
 
     const [quantity, setQuantity] = useState(0)
     const [totalCost, setTotalCost] = useState(0)
@@ -50,28 +53,129 @@ export default function GenerateRows({cloth, cloth_title}){
     const [activePrice, setActivePrice] = useState(false)
 
     const [resetState, setResetState] = useState(false)
+    
+    const [updateLaundryRow, setUpdateLaundryRow] = useState({
+      item_id: item_id,
+      product: "",
+      serviceNames: [],
+      expense: {
+        calculation: "",
+        result: ""
+      }
+    })
+    
+//for cart
 
+console.log(updateLaundryRow)
+
+function updateCart(updateLaundryRow, laundryCart){
+  
+  updateLaundryCart((prevState) => {
+    // Handle updating existing items or adding new items based on updateLaundryRow
+    if (laundryCart.length > 0) {
+      // Find the item to update by its item_id (assuming unique identifiers)
+      const existingItem = laundryCart.find(item => item.item_id === updateLaundryRow.item_id);
+
+      if (existingItem) {
+        // Update existing item properties directly
+        return prevState.map(item => (
+          item.item_id === updateLaundryRow.item_id ? updateLaundryRow : item
+        ));
+      } else {
+        // Add new item to the state
+        return [...prevState, updateLaundryRow];
+      }
+    } else {
+      // Initial cart or adding new item when cart is empty
+      return [updateLaundryRow]; // Add the new item directly
+    }
+  });
+
+
+}
+
+   
+useEffect(()=>{
+
+  if(quantity > -1  && totalRate > -1){
+    updateCart(updateLaundryRow, laundryCart)
+  }
+ 
+ 
+
+
+
+}, [ quantity, totalRate,updateLaundryRow])
+
+
+
+
+//for calculate sum
+
+function calculateSum(quantity, totalRate){
+
+  setTotalCost(quantity *  totalRate)
+
+}
     useEffect(()=>{
 
-        function calculateSum(){
-
-            setTotalCost(quantity *  totalRate)
-       
-        }
-        quantity > 0 && totalRate > 0 ? setActivePrice(true) : setActivePrice(false)
-        calculateSum()
+  
+        quantity > 0 && totalRate > 0 ? setActivePrice(true)  : setActivePrice(false)     
+        calculateSum(quantity, totalRate)
+        
+         
 
     }, [quantity, totalRate])
 
 
+//for row
+
+function addproducttitle(totalRate, quantity, cloth_title){
+  const title =  totalRate> 0 && quantity > 0 ? cloth_title : ""
+  setUpdateLaundryRow(prev=>({...prev, product: title}))
+}
 
 
-    function handleCost(cost, activeState){
+function addexpense(totalRate, quantity){
+
+ const calculation = quantity > 0 && totalRate > 0 ?  quantity.toString() + " x " + totalRate.toString() + " = " : ""
+const result = quantity > 0 && totalRate > 0 ? (quantity * totalRate).toString() : ""
+
+setUpdateLaundryRow(prev=>({...prev, expense: {calculation: calculation, result: result}}))
+
+}
+
+useEffect(()=>{
+
+
+if(quantity > -1 && totalRate -1){
+  addproducttitle(totalRate, quantity, cloth_title)
+  addexpense(totalRate, quantity)
+}
+
+quantity < 1 && setUpdateLaundryRow(prev=>({...prev, serviceNames: []}))
+
+
+
+}, [totalRate, quantity])
+
+
+
+
+
+    function handleCost(cost, activeState, servicename){
 
         setTotalRate(prev=>{
-           const newValue =  !activeState ? prev + cost : prev - cost
+           const newValue =  activeState ? prev - cost: prev + cost
             return newValue
         })
+
+        setUpdateLaundryRow(prev=>{
+          
+          const updateservice = activeState ? prev.serviceNames.filter(item=>item !== servicename) : [...prev.serviceNames, servicename]
+          return {...prev, serviceNames: updateservice}
+        })
+      
         
     }
 
@@ -100,10 +204,10 @@ export default function GenerateRows({cloth, cloth_title}){
   
           const darkicon = item.type[0]
           const lighticon = item.type[1]
-
+          const servicename = item.name
   
           return <GenerateWashIcons key ={i}darkicon={darkicon} lighticon={lighticon} cost = {item.cost} handleCost={handleCost}
-          resetState={resetState} setResetState={setResetState}/>
+          resetState={resetState} setResetState={setResetState} servicename = {servicename}/>
         })}
         
       </td>

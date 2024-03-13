@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose';
-
+import session from 'express-session'
 import bodyParser from 'body-parser';
 
 import UserRouter from './Router/UserRouter.js';
@@ -12,6 +12,8 @@ const mongoDBURL ="mongodb://localhost/laundryapp"
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json());
 app.use(cors())
+
+
 
 const PORT = "3000";
 

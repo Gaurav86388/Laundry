@@ -12,6 +12,7 @@ export default function RenderContextProvider({children}){
     const [render, setRender] = useState('createOrder')
     const [showAlert, setShowAlert] = useState("")
     const [showSummary, setShowSummary] = useState(false)
+    const [laundryCart, setLaundryCart] = useState([])
 
       function onHandleRender(command){
 
@@ -21,7 +22,9 @@ export default function RenderContextProvider({children}){
 
 
     return <renderContext.Provider value={{render, 
-    onHandleRender, showAlert, setShowAlert, showSummary, setShowSummary}}>
+    onHandleRender, showAlert, setShowAlert, showSummary, setShowSummary,
+    laundryCart, setLaundryCart
+    }}>
 
             {children}
     </renderContext.Provider>
