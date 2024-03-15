@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import "./Summary.css";
 import Card from "./Card";
@@ -23,18 +23,76 @@ const {setShowSummary, showAlert, setShowAlert, laundryCart} = useRender()
 
 
 const [ isSelected, setIsSelected] = useState()
+const [cardAdd, setCardAdd] = useState()
+
+const [formData, setformData] = useState({
+  storeDetails: {
+    storeLocation:"",
+    storeAddress: "",
+    phone: ""
+  },
+
+  orderDetails: {
+    rows: [],
+    subTotal : 0,
+    pickupCharge : 0,
+    total: 0
+  },
+  userAddress: {
+    title: "",
+    fulladdress: "",
+    city: ""
+  }
+})
 
 const values = laundryCart.map(item=> item.product !== "" && parseInt(item.expense.result))
 
-
+const pickupCharge = 90
 let subTotal = 0
 for (let i=0; i< values.length; i++){
   subTotal= subTotal + values[i]
 }
+useEffect(()=>{
+
+  if(subTotal > 0){
+    setformData((prev)=>({...prev, orderDetails: {...prev.orderDetails, subTotal: subTotal, pickupCharge: pickupCharge, total: subTotal + pickupCharge}}))
+  const newArray = laundryCart.filter(item=> { if(item.product !== "" )return item } )
+
+  setformData((prev)=>({...prev, orderDetails: {...prev.orderDetails, rows: newArray}}))
+  }
 
 
 
-  return (<>
+}, [subTotal])
+
+console.log(formData)
+function handleConfirm(){
+
+fetch("http://localhost:3000/order/orderdetails", {
+  method: "POST",
+  headers: {
+    'Content-Type': "application/json",
+    Accept: "application/json"
+  },
+  body: JSON.stringify(formData)
+})
+.then(res=>res.json())
+.then(data=>{
+if(data ==="success"){
+  setShowAlert("Confirm")
+}
+else if(data === "less details"){
+  setShowAlert("less details")
+}
+})
+.catch(e=>console.log(e))
+  
+  
+  
+}
+
+
+return (<>
   {showAlert !== "" && <Alert message={showAlert}/>}
   
     <div className="summary">
@@ -48,7 +106,10 @@ for (let i=0; i< values.length; i++){
       
       <div className="summary-store-info">
         <div id="store-location">
-          <select name="" id="store-location-select">
+          <select name="" id="store-location-select" 
+          onChange={(e)=>setformData(prev=>({...prev, storeDetails: {...prev.storeDetails, storeLocation: e.target.value}}))}>
+
+
           <option id="store-location-option">Store location</option>
             <option id="store-location-option">J P Nagar</option>
             <option id="store-location-option">Maha Nagar</option>
@@ -56,13 +117,13 @@ for (let i=0; i< values.length; i++){
         </div>
         <div className="store-address">
           <h3>Store Address:</h3>
-          <input type="text" placeholder="—" />
+          <input type="text" placeholder="—"  onChange={(e)=>setformData(prev=>({...prev, storeDetails: {...prev.storeDetails, storeAddress: e.target.value}}))}/>
          
         </div>
 
         <div className="store-phone">
           <h3>Phone</h3>
-          <input type="number" placeholder="—" />
+          <input type="number" placeholder="—"  onChange={(e)=>setformData(prev=>({...prev, storeDetails: {...prev.storeDetails, phone: e.target.value}}))}/>
           
         </div>
       </div>
@@ -75,7 +136,7 @@ for (let i=0; i< values.length; i++){
 
               if(item.product === "") return
 
-              console.log(laundryCart)
+             
               return <tr key={index}>
               <td>{item.product}</td>
               <td id="order-details-table-services">{...item.serviceNames}</td>
@@ -112,8 +173,9 @@ for (let i=0; i< values.length; i++){
           <div className="address-cards">
             {cardData.map((item, index)=>{
 
-                return <Card key={index} cardId={index} selected = {isSelected === index} isSelected={setIsSelected}
-                 title={item.title} address={item.address}/>
+                return <Card key={index} title={item.title} address={item.address}
+                cardId={index} selected = {isSelected === index}  setIsSelected={setIsSelected}
+                  setformData={setformData} cardSelect={cardAdd === item.address} cardAdd={cardAdd} setCardAdd= {setCardAdd}/>
             })}
            
 
@@ -124,7 +186,7 @@ for (let i=0; i< values.length; i++){
       </div>
       <div className="summary-lower">
 
-        <button id="summary-confirm-button" onClick={()=>setShowAlert("Confirm")}> Confirm</button>
+        <button id="summary-confirm-button" onClick={handleConfirm}> Confirm</button>
       </div>
     </div>
     </>
@@ -132,5 +194,3 @@ for (let i=0; i< values.length; i++){
 };
 
 export default Summary;
-
-

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 
 import "./Alert.css";
@@ -7,11 +7,18 @@ import Button from "../components/Button";
 
 
 const alertMessages = {
-  order: {
+  orderSubPass: {
   heading :'Your order is successful',
  message : 'You can track the delivery in the "Orders" section.',
  btnName : 'Go to Orders'
 },
+
+orderSubFail: {
+  heading :"Order Parameters Not Met.",
+  message : 'You  need to fill all the details.',
+  btnName : "Understood"
+}
+,
 
 regFail: {
   heading :"Registration Unsuccessful.",
@@ -23,7 +30,8 @@ regPass: {
   heading :"Registration Successful.",
   message : 'Your account has been created.',
   btnName : "Go to Sign in"
-}
+},
+
 
 
 }
@@ -52,11 +60,16 @@ else if (message === "Success register"){
 
 else if (message === "Confirm"){
 
-  heading = alertMessages.order.heading
-  info = alertMessages.order.message
-  btnName = alertMessages.order.btnName
+  heading = alertMessages.orderSubPass.heading
+  info = alertMessages.orderSubPass.message
+  btnName = alertMessages.orderSubPass.btnName
   
 
+}
+else if(message === "less details"){
+  heading = alertMessages.orderSubFail.heading
+  info = alertMessages.orderSubFail.message
+  btnName = alertMessages.orderSubFail.btnName
 }
 
 

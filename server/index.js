@@ -1,9 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose';
-import session from 'express-session'
+import orderRouter from "./Router/OrderRouter.js"
 import bodyParser from 'body-parser';
 
-import UserRouter from './Router/UserRouter.js';
+import userRouter from './Router/UserRouter.js';
 import cors from 'cors';
 const app = express()
 
@@ -26,8 +26,8 @@ async function main(){
         console.log(e)
     }
 
-    app.use("/", UserRouter)
-
+    app.use("/user", userRouter)
+    app.use("/order", orderRouter)
     
 
     app.listen(PORT, ()=>{

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import  RenderContextProvider  from "./Context";
 import Alert from "./Extra/Alert";
+import CancelAlert from "./Extra/CancelAlert";
 function App() {
   return (
     <RenderContextProvider>
@@ -12,7 +13,7 @@ function App() {
           <Route exact path="/" element={<Signin />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/home" element={<Home />} />
-          <Route exact path="/test" element={<Alert />} />
+          <Route exact path="/test" element={<CancelAlert />} />
           
         </Routes>
       </BrowserRouter>

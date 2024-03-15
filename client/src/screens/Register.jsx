@@ -64,7 +64,7 @@ const [checkMatchPassword, setCheckMatchPassword] = useState(true)
     if(RegDetails.Password !== RegDetails.ConfirmPassword) return setCheckMatchPassword(false)
 
    
-      fetch("http://localhost:3000/register", {
+      fetch("http://localhost:3000/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

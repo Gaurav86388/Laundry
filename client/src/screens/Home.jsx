@@ -9,6 +9,7 @@ import CreateOrder from '../renders/CreateOrder'
 import Records from '../renders/Records'
 import Service from '../renders/Service'
 import { useRender } from '../Context'
+import CancelAlert from '../Extra/CancelAlert'
 
 const navNames = ["Pricing", "Career", "Username"]
 
@@ -30,6 +31,7 @@ const Home = () => {
                {render === 'createOrder' && <CreateOrder />}
                {render === 'service' && <Service />}
                {render === 'records' && <Records />}
+             
 
             </div>
 

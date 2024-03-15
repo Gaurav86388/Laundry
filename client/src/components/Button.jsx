@@ -27,7 +27,8 @@ const Button = ({buttonName, classname, link="", handleQuantity, handleRate, han
       if(buttonName ==="Create"){
         onHandleRender("service")
       }
-      if(buttonName === "Go Back" || buttonName === "Go to Sign in" || buttonName === "Go to Orders"){
+      if(buttonName === "Go Back" || buttonName === "Go to Sign in" 
+      || buttonName === "Go to Orders" || buttonName === "Understood"){
         setShowAlert("")
       }
 
@@ -36,9 +37,15 @@ const Button = ({buttonName, classname, link="", handleQuantity, handleRate, han
         setShowSummary(false)
         onHandleRender("records")
       }
-      if(buttonName === "Proceed" && laundryCart.length >0){
+      if(buttonName === "Proceed"){
+        const checkArray = laundryCart.filter(item=> {
+          if(item.product !== ""){
+            return item
+          }
+        })
+       
+        if(checkArray.length !== 0) return setShowSummary(true)
         
-        setShowSummary(true)
       }
 
     }

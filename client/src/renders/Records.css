@@ -51,6 +51,25 @@ font-size: 16px;
     font-weight: 700;
 }
 
+.order-status{
+
+    display: flex;
+    justify-content: space-between;
+
+}
+#order-status-btn{
+    outline: 0;
+    border: 0;
+    color: #EB1717;
+    background-color: transparent;
+}
+
+#item-status-active{
+    color: #F52727;
+    font-weight: 700;
+ 
+}
+
 
 
 

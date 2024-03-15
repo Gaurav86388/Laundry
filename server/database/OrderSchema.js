@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
+
+
 const orderSchema = mongoose.Schema({
     orderId: {type: String, required: true},
-    orderDateAndTime: {type: Date, required: true, default: Date.now()},
+    orderDateAndTime: {type: String, required: true},
 
     storeLocation: {type: String, required: true, default: "7th Street, JP Nagar"},
     city: {type: String, required: true, default: "Mumbai"}, 
@@ -12,7 +14,7 @@ const orderSchema = mongoose.Schema({
     
    price:{type: String, required: true},
    status:{type: String, required: true, default: "Order Registered"},
-   userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
+   //userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
     
 })
 

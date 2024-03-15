@@ -26,7 +26,7 @@ const Signin = () => {
   function handleSigninForm(e) {
     e.preventDefault();
     console.log(signinDetails);
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

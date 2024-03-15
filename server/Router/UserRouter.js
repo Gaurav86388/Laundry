@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { users } from "../database/UserSchema.js";
+
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 const salt_rounds = 10
 const secret = "sdfhsdfihsdfahsdfahsdifasdyqtoetqwncnczxmncvlafu"
 
-const router = Router()
+const userRouter = Router()
 
 
 function validateUserkey(Userkey){
@@ -19,7 +20,7 @@ function validateUserkey(Userkey){
     }
 
 }
-router.post("/login", async(req, res)=>{
+userRouter.post("/login", async(req, res)=>{
 
     const {Userkey, Password} = req.body
     console.log(Userkey, Password)
@@ -62,7 +63,7 @@ router.post("/login", async(req, res)=>{
 
 
 
-router.post("/register", async(req, res)=>{
+userRouter.post("/register", async(req, res)=>{
 
     const registrationData = req.body
     const {Email, Password} = req.body
@@ -102,42 +103,12 @@ router.post("/register", async(req, res)=>{
         }
     
        })
-    
 
-    
-
-    
 
 
 })
 
-function authenticateToken(req, res, next){
-
-    const authHeader = req.headers.authorization
-
-    const token = authHeader ? authHeader.split(" ")[1] : res.json({status: "where is the token man!"})
- 
-    if(token === null) return res.sendStatus(401)
-
-    jwt.verify(token, secret, async(err, decoded)=>{
-        if(err) return console.log(err)
-
-        const userdata = await users.findOne({_id: decoded.data})
-
-        if(!userdata) return res.status(400).render("http://localhost:5173")
-        
-        req.userId = userdata._id
-
-        next()
-
-    })
 
 
-}
 
-router.get("/secret", authenticateToken, async(req, res)=>{
-    res.json({text: "hi"})
-})
-
-
-export default router
+export default userRouter

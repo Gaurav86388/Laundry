@@ -66,28 +66,29 @@ export default function GenerateRows({cloth, cloth_title,updateLaundryCart, item
     
 //for cart
 
-console.log(updateLaundryRow)
+
 
 function updateCart(updateLaundryRow, laundryCart){
   
   updateLaundryCart((prevState) => {
-    // Handle updating existing items or adding new items based on updateLaundryRow
+    
+ 
     if (laundryCart.length > 0) {
-      // Find the item to update by its item_id (assuming unique identifiers)
+
       const existingItem = laundryCart.find(item => item.item_id === updateLaundryRow.item_id);
 
       if (existingItem) {
-        // Update existing item properties directly
+
         return prevState.map(item => (
           item.item_id === updateLaundryRow.item_id ? updateLaundryRow : item
         ));
       } else {
-        // Add new item to the state
+     
         return [...prevState, updateLaundryRow];
       }
     } else {
-      // Initial cart or adding new item when cart is empty
-      return [updateLaundryRow]; // Add the new item directly
+
+      return [updateLaundryRow]; 
     }
   });
 
