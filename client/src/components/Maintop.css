@@ -1,0 +1,36 @@
+
+.main-top{
+    padding: 60px 50px 0 50px;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+#main-top-title{
+
+    font-size: 28px;
+
+}
+
+.main-top-create{
+    margin-left: 65%;
+}
+
+
+.main-top-searchbar{
+
+    display: flex;
+
+}
+.main-top-searchbar.search-icon{
+    position: absolute;
+    padding-left: 3px;
+    padding-top: 2px;
+}
+.main-top-searchbar> input{
+    width: 200px;
+    height: 20.79px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(112, 128, 144, 0.8);
+}

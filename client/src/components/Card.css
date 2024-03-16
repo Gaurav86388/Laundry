@@ -1,0 +1,16 @@
+.card{
+    width: 200px;
+    height: 130px;
+    position: relative;
+}
+.card-check{
+    display: flex;
+    justify-content: right;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.card-body{
+    position: absolute;
+    top:11px;
+}

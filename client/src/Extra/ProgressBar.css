@@ -1,0 +1,39 @@
+
+.progress-bar{
+    border: 1px solid rgb(62, 63, 64, 0.2);
+    padding: 5px;
+    background-color: #FFFFFF;
+  
+}
+.progress-bar>ul{
+display: flex;
+justify-content: center;
+width: auto;
+gap: 5px;
+margin-top: 12px;
+
+}
+
+.progress-list{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+
+}
+.circle{
+    width: 12px;
+    height: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.progress-list>p{
+    margin-top: 16px;
+    width: 80px;
+}
+.progress-bar-line{
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 205px;
+    height: 3px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
