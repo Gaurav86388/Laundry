@@ -23,6 +23,7 @@ async function main(){
 
     try{
        await  mongoose.connect(mongoDBURL)
+       .then(()=>console.log("DB Connected"))
     }
     catch(e){
         console.log(e)

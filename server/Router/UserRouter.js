@@ -81,6 +81,7 @@ userRouter.post("/register", async(req, res)=>{
         console.log(e)
     }
 
+
     if(existingEmail || existingPhone) return res.status(400).json({message: 'User already exists.'})
 
     bcrypt.hash(Password, salt_rounds, async(err, hash)=>{
