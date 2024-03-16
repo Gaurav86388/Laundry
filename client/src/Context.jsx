@@ -29,7 +29,7 @@ export default function RenderContextProvider({children}){
     return <renderContext.Provider value={{render, 
     onHandleRender, showAlert, setShowAlert, showSummary, setShowSummary,
     laundryCart, setLaundryCart, cancelAlert, setCancelAlert,
-    username, setUsername
+    username, setUsername,
     }}>
 
             {children}

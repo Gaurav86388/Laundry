@@ -43,6 +43,7 @@ const Signin = () => {
 
         if(data.message === 'validated'){
           const token = data.token
+ 
           localStorage.setItem('jwt', token)
 
           setSigninSuccess(true)

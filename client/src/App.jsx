@@ -3,7 +3,7 @@ import Register from "./screens/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import  RenderContextProvider  from "./Context";
-import ProgressBar from "./Extra/ProgressBar";
+import Protected from "./Extra/Protected";
 function App() {
   return (
     <RenderContextProvider>
@@ -11,11 +11,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Signin />} />
           <Route exact path="/register" element={<Register />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/test" element={<ProgressBar />} />
-
-          
-          
+          <Route exact path="/home" element={<Protected>
+            <Home />
+            </Protected>        
+        } />                             
         </Routes>
       </BrowserRouter>
     </RenderContextProvider>

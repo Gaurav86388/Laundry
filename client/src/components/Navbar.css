@@ -53,7 +53,7 @@ font-family: 'Roboto', sans-serif;
 #link-list-items-last-user{
     background-color: #4552C1;
     display: flex;
-    justify-content: center;
+   padding-left: 55px;
     align-items: center;
     width: 260px;
     color: white;
@@ -69,4 +69,42 @@ font-family: 'Roboto', sans-serif;
     margin-top: 16px;
     margin-bottom: 22px;
     
+}
+.btn-secondary{
+    background-color: #4552C1;
+    outline: none;
+    border: none;
+}
+.btn-secondary:hover{
+    background-color: #2f3ba6;;
+}
+.dropdown-menu{
+
+    
+    
+    background-color: #FFFFFF;
+    font-size: 16px;
+    min-width: 110px;
+    border: 1px solid rgb(88, 97, 174, 0.4);
+}
+.dropdown-menu:hover{
+    background-color:whitesmoke;
+}
+.logout-btn >span{
+    margin-left: 10px;
+}
+.logout-btn>img{
+    width: 22px;
+    margin-left: 7px;
+}
+.logout-btn{
+   
+    width: auto;
+    height: 20px;
+    border: 0;
+    background-color: #FFFFFF;
+    color: #5861AE;
+}
+.logout-btn:hover{
+    background-color:whitesmoke;
 }
