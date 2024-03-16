@@ -68,7 +68,7 @@ const Records = () => {
 
   useEffect(()=>{
     const jwt = localStorage.getItem("jwt")
-    fetch("http://localhost:3000/order/orderdetails", {
+    fetch("https://laundrycartapp-jahb.onrender.com/order/orderdetails", {
       method: 'GET',
       headers: {
         'Content-Type': "application/json",
