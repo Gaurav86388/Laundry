@@ -1,0 +1,156 @@
+.main-center-service{
+    align-self: center;
+    width: 95%;
+    height: 774px;
+    margin: 2% 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Open sans" , sans-serif;
+}
+
+.service-center{
+
+width: 100%;
+border: 1px solid rgb(128, 128, 128, 0.4);
+border-collapse: collapse;
+
+
+}
+
+.service-center>thead{
+
+    color: #FFFFFF;
+    background: #2F2F2F;
+    height: 50px;
+    font-family: "Montserrat" , sans-serif;
+
+}
+.service-center>thead>tr>th{
+    font-weight: 500;
+    text-align: left;
+    padding-left: 15px;
+
+}
+
+.service-center>thead>tr>th:first-child{
+    width: 30%;
+}
+
+.service-center>thead>tr>th:nth-child(2){
+    width: 20%;
+}
+
+.service-center>thead>tr>th:last-child{
+    width: 23%;
+
+}
+
+
+
+.product-type{
+    display: flex;
+    gap: 13px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.product-description>h3{
+    font-weight: 600;
+    color: #5861AE
+
+}
+.product-description>p
+{   font-size: 12px;
+    color: #76788B;
+    margin-top: 2px;
+}
+.product-qt{
+    padding-left: 17px;
+}
+.product-qt input{
+width: 20%;
+
+height: 25px;
+border: 1.5px solid rgb(128, 128, 128, 0.7);
+border-radius: 3px;
+}
+
+.wash-type{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding-right: 100px;
+   
+}
+.price-section-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 0 12px;
+    font-family: "Open Sans", sans-serif;
+    
+}
+.price-text{
+    text-align: left;
+}
+.price-text #price-null{
+    color: #605959;
+    font-weight: 300;
+    opacity: 0.73;
+
+    
+}
+#price-cal{
+    font-size: 26px;
+    letter-spacing: 0.43px;
+}
+#price-total{
+    color: #5861AE;
+    font-size: 28px;
+    letter-spacing: 0.58px;
+}
+.price-reset-btn{
+width: 70px;
+height: 38px;
+color: #5861AE ;
+border-radius: 4px;
+border: 1px solid #5861AE;
+background-color: #FFFFFF;
+font-weight: 500;
+font-size: 17px;
+font-family: "Open Sans", sans-serif;
+}
+
+
+.service-bottom{
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    justify-content: flex-end;
+    margin-bottom: 53px;
+    
+}
+.cancel-btn{
+    width: 100px;
+    height: 38px;
+    background-color: #FFFFFF;
+    color: #4552C1;
+    border: 1px solid #4552C1;
+    font-size: larger;
+    border-radius: 4px;
+}
+
+.proceed-btn{
+    width: 100px;
+    height: 38px;
+    background: #5861AE 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    font-size: larger;
+}
+
+
+

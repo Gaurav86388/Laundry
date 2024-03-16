@@ -1,0 +1,256 @@
+.summary{
+    
+    position: absolute;
+    left: 40%;
+    bottom: 1%;
+    z-index: 5;
+    width: 60%;
+    height: 100vh;
+    margin-bottom: 41px;
+    
+}
+
+.summary-title{
+    color: white;
+    background-color: #5861AE;
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 25px 25px 25px;
+
+}
+.summary-title>h1{
+    font-size: 22px ;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cross-img>img{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.summary-store-info{
+
+    display: flex;
+    background-color: #F4F9FF;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.summary-store-info >div{
+    width: 33%;
+    padding: 20px 30px 20px 0;
+}
+
+#store-location{
+    padding-left: 50px;
+}
+#store-location-select{
+    
+    border: 0;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+    outline: 0;
+    width: 80%;
+    background-color: #F4F9FF;
+    padding-bottom: 10px;
+    color: rgb(62, 63, 64, 0.6);
+    
+    font-size: 15px ;
+}
+.store-address, .store-phone{
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 200;
+}
+
+.store-address h3, .store-phone h3{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.store-address>input, .store-phone>input{
+    cursor: pointer;
+    border: none;
+    background-color:#F4F9FF;
+    outline: none;
+}
+
+
+.order-details{
+    padding: 18px 50px 15px 50px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+    
+}
+.order-details>p{
+    color: rgb(62, 63, 64, 0.9);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+#order-details-table{
+
+    width: 100%;
+    border-collapse: collapse;
+    min-height: 310px;
+}
+
+#order-details-table>tbody>tr>td:first-child{
+    width: 36%;
+    font-size: 18px;
+}
+#order-details-table>tbody>tr>td:last-child{
+    width: 18%;
+   
+}
+
+#order-details-table-services{
+    font-style: italic ;
+    color: #1B2734;
+    font-size: 18px;
+
+}
+#order-details-table-price-calc{
+    width: 50%;
+    font-size: 18px;
+}
+.order-details-table-price>span{
+font-weight: 700;
+color: #5861AE;
+font-size: 19px;
+}
+.order-details-table-price{
+    display: flex;
+   
+    gap: 20px;
+}
+#order-details-table>tbody>tr>td{
+
+    
+    padding-left: 10px;
+    height: 40px;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+
+}
+
+
+.below-table{
+    
+    display: flex;
+    flex-direction: column;
+   
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 24px;
+    
+}
+.sub-total,.pickup-charge{
+    display: flex;  
+    width: 28%;
+    justify-content: flex-end;
+    padding-right: 30px;
+    gap: 40px;
+    
+}
+
+.sub-total h4, .pickup-charge h4{
+    font-weight: 500;
+    color: #1B2734;
+    font-size: 18px;
+    width: 70%;
+    text-align: right;
+    
+}
+
+.sub-total h3, .pickup-charge h3{
+    width: 13%;
+    font-size: 18px;
+}
+.sub-total{
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+}
+
+.total{
+    display: flex;
+    background-color: #5861AE;
+    margin-top: 14px;
+    padding: 15px;
+    justify-content: flex-end;
+    gap: 23px;
+    
+}
+.total>h4{
+    font-weight: 600;
+    color: #1B2734;
+    font-size: 18px;
+    width: 10%;
+    text-align: right;
+    color: #F4F9FF;
+    font-family: "Open Sans", sans-serif;
+}
+.total >h3{
+    width: 9%;
+    font-size: 18px;
+    
+}
+
+.address{
+    padding: 15px 50px 20px 50px;
+    background-color: #FFFFFF;
+    height: 250px;
+    
+    
+}
+
+.address>p{
+ 
+        color: rgb(62, 63, 64, 0.9);
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 25px;  
+
+}
+
+.address-sub{
+    display: flex;
+    gap: 30px;
+}
+.address-cards{
+    display: flex;
+    gap: 30px;
+    
+}
+.address-sub-btn{
+    color: #5861AE;
+    font-weight: 700;
+    font-size: 18px;
+    border: 0;
+    background: none;
+}
+   
+.summary-lower{
+display: flex;
+justify-content: flex-end;
+background-color: #F4F4F4;
+
+padding: 8px 45px 15px 0px;
+height: 50px;
+}
+
+#summary-confirm-button{
+    width: 100px;
+    height: 38px;
+    background: #5861AE 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    font-size: larger;
+ 
+    
+}

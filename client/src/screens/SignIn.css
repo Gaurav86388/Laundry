@@ -1,0 +1,231 @@
+
+.signin{
+
+
+width: 100%;
+height: 1172px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+display: flex;
+flex-direction: column;
+
+
+}
+
+.top{
+    width: 100%;
+
+}
+
+.middle{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.signin-left, .signin-right{
+    width: 50%;
+    height: 769px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    
+}
+
+
+.signin-left-title{
+
+font: normal normal 900 100px/120px 'Roboto';
+letter-spacing: 0px;
+color: #5861AE;
+
+}
+
+.door{
+    
+
+width: 335px;
+height: 40px;
+font: normal normal normal 20px/26px'Roboto';
+letter-spacing: 0.8px;
+color: #565657;
+
+}
+
+.signin-left-upper{
+    height: 330px;
+    margin-right: 170px;
+
+}
+.signin-left-lower{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-right: 370px;
+}
+
+
+#register-text{ 
+    
+    font: normal normal normal 16px / 26px 'Roboto';
+    letter-spacing: 0.64px;
+    color: #565657;
+}
+
+.signin-register-btn{
+    
+width: 150px;
+height: 50px;
+background-color: #FFFFFF;
+color: #4552C1;
+border: 2px solid #4552C1;
+font-size: larger;
+border-radius: 4px;
+
+}
+
+.signin-right{
+    background: #B9C0FD1A 0% 0% no-repeat padding-box;
+    position: relative;
+}
+
+.signin-right-title{
+
+    position: absolute;
+    top: 23%;
+    left: 19%;
+    color: #5861AE;
+
+}
+
+.signin-form{
+    position: absolute;
+    top: 40%;
+    right: 34%;
+    height: 63%;
+}
+
+.input-data-found,.input-data-not-found,.input-data-password, .input-data-wrong-password{
+    display: flex;
+    flex-direction: column;    
+    width: 450px;
+    height: 40px;
+    margin-bottom: 1px;
+    
+    
+}
+
+.input-data-found label, .input-data-not-found label, .input-data-password label,  .input-data-wrong-password label  {
+    
+    color: rgb(112, 128, 144, 0.8);
+    font-size: 20px;
+    transition: all 0.3s  ease-in-out;
+    position: relative;
+    bottom: 50px;
+   
+}
+
+.input-data-found input, .input-data-not-found input, .input-data-password input,  .input-data-wrong-password input{
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    font-size: 18px;
+    background: transparent;
+    border-bottom: 1px solid #565657;
+    font-weight: 600;
+
+    
+}
+
+.input-data-not-found input, .input-data-wrong-password input{
+    border-bottom: 1px solid #EF1A1A;
+    color:#EF1A1A;
+}
+
+.input-data-found input:focus + label,
+.input-data-found input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-not-found input:focus + label,
+.input-data-not-found input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-password input:focus + label,
+.input-data-password input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-wrong-password input:focus + label,
+.input-data-wrong-password input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+
+.error-message-active{
+    font-style: italic;
+    text-align: right;
+    margin-bottom: 50px;
+    color: #EF1A1A;
+    
+}
+.error-message-inactive{
+    visibility: hidden;
+    margin-top: 15px;
+}
+
+
+
+.lock{
+    
+    position: absolute;
+    top: 19.5%;
+    right: 1%;
+      
+}
+
+#forget-link{
+    position: relative;
+    left: 70%;
+    bottom: 9%;
+    
+    font-weight: 600;
+      
+}
+
+.signin-signin-btn{
+width: 150px;
+height: 50px;
+background: #5861AE 0% 0% no-repeat padding-box;
+border-radius: 4px;
+border: none;
+color: #FFFFFF;
+font-size: larger;
+
+position: absolute;
+    top: 51%;
+    left: 38%;
+}
+
+.bottom{
+    width: 100%;
+    position: relative;
+    height: 700px;
+
+}
+

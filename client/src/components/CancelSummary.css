@@ -1,0 +1,245 @@
+.cancelSummary{
+    
+    position: absolute;
+    left: 40%;
+    bottom: 6.1%;
+    z-index: 5;
+    width: 60%;
+    height: 100vh;
+    margin-bottom: 41px;
+    
+}
+
+.cancelSummary-title{
+    color: white;
+    background-color: #5861AE;
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 25px 25px 25px;
+
+}
+.cancelSummary-title>h1{
+    font-size: 22px ;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cancelSummary-cross-img>img{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.cancelSummary-store-info{
+
+    display: flex;
+    background-color: #F4F9FF;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 60px;
+}
+
+.cancelSummary-store-info >div{
+    width: 33%;
+    padding: 20px 30px 20px 0;
+}
+
+
+
+.cancelSummary-store-location, .cancelSummary-store-address, .cancelSummary-store-phone{
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.cancelSummary-store-location>h3, .cancelSummary-store-address>h3, .cancelSummary-store-phone>h3 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+
+
+.cancelSummary-order-details{
+    padding: 18px 50px 15px 50px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+    
+}
+.cancelSummary-order-details>p{
+    color: rgb(62, 63, 64, 0.9);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+#cancelSummary-order-details-table{
+
+    width: 100%;
+    border-collapse: collapse;
+    min-height: 310px;
+}
+
+#cancelSummary-order-details-table>tbody>tr>td:first-child{
+    width: 36%;
+    font-size: 18px;
+}
+#cancelSummary-order-details-table>tbody>tr>td:last-child{
+    width: 18%;
+   
+}
+
+#cancelSummary-order-details-table-services{
+    font-style: italic ;
+    color: #1B2734;
+    font-size: 18px;
+
+}
+#cancelSummary-order-details-table-price-calc{
+    width: 50%;
+    font-size: 18px;
+}
+.cancelSummary-order-details-table-price>span{
+font-weight: 700;
+color: #5861AE;
+font-size: 19px;
+}
+.cancelSummary-order-details-table-price{
+    display: flex;
+   
+    gap: 20px;
+}
+#cancelSummary-order-details-table>tbody>tr>td{
+
+    
+    padding-left: 10px;
+    height: 40px;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+
+}
+
+
+.cancelSummary-below-table{
+    
+    display: flex;
+    flex-direction: column;
+   
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 24px;
+    
+}
+.cancelSummary-sub-total,.cancelSummary-pickup-charge{
+    display: flex;  
+    width: 28%;
+    justify-content: flex-end;
+    padding-right: 30px;
+    gap: 40px;
+    
+}
+
+.cancelSummary-sub-total h4, .cancelSummary-pickup-charge h4{
+    font-weight: 500;
+    color: #1B2734;
+    font-size: 18px;
+    width: 70%;
+    text-align: right;
+    
+}
+
+.cancelSummary-sub-total h3, .cancelSummary-pickup-charge h3{
+    width: 13%;
+    font-size: 18px;
+}
+.cancelSummary-sub-total{
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(62, 63, 64, 0.2);
+}
+
+.cancelSummary-total{
+    display: flex;
+    background-color: #5861AE;
+    margin-top: 18px;
+    padding: 15px;
+    justify-content: flex-end;
+    gap: 23px;
+    
+}
+.cancelSummary-total>h4{
+    font-weight: 600;
+    color: #1B2734;
+    font-size: 18px;
+    width: 10%;
+    text-align: right;
+    color: #F4F9FF;
+    font-family: "Open Sans", sans-serif;
+}
+.cancelSummary-total >h3{
+    width: 9%;
+    font-size: 18px;
+    
+}
+
+.cancelSummary-address{
+    padding: 15px 50px 20px 50px;
+    background-color: #FFFFFF;
+    height: 250px;
+    
+    
+}
+
+.cancelSummary-address>p{
+ 
+        color: rgb(62, 63, 64, 0.9);
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 25px;  
+
+}
+
+.cancelSummary-address-sub{
+    display: flex;
+    gap: 30px;
+}
+.cancelSummary-address-cards{
+    display: flex;
+    gap: 30px;
+    
+}
+.cancelSummary-address-sub-btn{
+    color: #5861AE;
+    font-weight: 700;
+    font-size: 18px;
+    border: 0;
+    background: none;
+}
+   
+.cancelSummary-lower{
+display: flex;
+justify-content: flex-end;
+background-color: #F4F4F4;
+align-items: center;
+padding: 8px 45px 15px 0px;
+height: 50px;
+}
+
+#cancelSummary-cancel-button-active, #cancelSummary-cancel-button-inactive{
+    width: 120px;
+    height: 35px;
+    background: #F41313;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    font-size: larger;
+ 
+    
+}
+
+#cancelSummary-cancel-button-inactive{
+    background: rgb(244, 19, 19, 0.5);
+  
+}
