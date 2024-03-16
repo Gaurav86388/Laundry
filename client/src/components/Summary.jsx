@@ -69,7 +69,7 @@ console.log(formData)
 
 function handleConfirm(){
 const jwt = localStorage.getItem("jwt")
-fetch("http://localhost:3000/order/orderdetails", {
+fetch("https://laundrycartapp-jahb.onrender.com/order/orderdetails", {
   method: "POST",
   headers: {
     'Content-Type': "application/json",

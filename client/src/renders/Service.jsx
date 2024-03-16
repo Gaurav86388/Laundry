@@ -21,7 +21,7 @@ const Service = () => {
 
   }
   
-  //console.log(laundryCart)
+ 
   return (
     <>
     {showSummary && <Summary laundryCart={laundryCart}/>}

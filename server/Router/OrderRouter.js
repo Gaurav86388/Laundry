@@ -3,8 +3,10 @@ import jwt from "jsonwebtoken"
 import { users } from "../database/UserSchema.js";
 import {order} from "../database/OrderSchema.js"
 import {orderSummary} from "../database/OrderSummarySchema.js"
+import dotenv from 'dotenv'
 
-const secret = "sdfhsdfihsdfahsdfahsdifasdyqtoetqwncnczxmncvlafu"
+dotenv.config()
+const secret = process.env.secret
 
 const orderRouter = Router()
 
@@ -36,7 +38,7 @@ function authenticateToken(req, res, next){
 
         const userdata = await users.findOne({_id: decoded.data})
 
-        if(!userdata) return res.status(400).render("http://localhost:5173").json({status:"Unauthorised"})
+        if(!userdata) return res.status(400).json({status:"Unauthorised"})
         
         req.userId = userdata._id
         

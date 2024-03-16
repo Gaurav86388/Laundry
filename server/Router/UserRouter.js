@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { users } from "../database/UserSchema.js";
+import dotenv from 'dotenv'
 
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 const salt_rounds = 10
-const secret = "sdfhsdfihsdfahsdfahsdifasdyqtoetqwncnczxmncvlafu"
+const secret = process.env.secret
 
 const userRouter = Router()
-
+dotenv.config()
 
 function validateUserkey(Userkey){
 
@@ -76,9 +77,10 @@ userRouter.post("/register", async(req, res)=>{
         existingEmail = await users.findOne({Email: Email})
         existingPhone = await users.findOne({Phone: Phone})
     }
-    catch(e){s
+    catch(e){
         console.log(e)
     }
+
 
     if(existingEmail || existingPhone) return res.status(400).json({message: 'User already exists.'})
 

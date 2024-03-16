@@ -2,12 +2,14 @@ import express from 'express'
 import mongoose from 'mongoose';
 import orderRouter from "./Router/OrderRouter.js"
 import bodyParser from 'body-parser';
-
+import dotenv from 'dotenv'
 import userRouter from './Router/UserRouter.js';
 import cors from 'cors';
 const app = express()
 
-const mongoDBURL ="mongodb://localhost/laundryapp"
+dotenv.config()
+
+const mongoDBURL =`mongodb+srv://${process.env.atlasusername}:${process.env.atlaspassword}@laundry.newbldr.mongodb.net/?retryWrites=true&w=majority`
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json());
@@ -21,6 +23,7 @@ async function main(){
 
     try{
        await  mongoose.connect(mongoDBURL)
+       .then(()=>console.log("DB Connected"))
     }
     catch(e){
         console.log(e)
