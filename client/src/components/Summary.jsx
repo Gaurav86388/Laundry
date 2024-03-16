@@ -66,13 +66,15 @@ useEffect(()=>{
 }, [subTotal])
 
 console.log(formData)
-function handleConfirm(){
 
+function handleConfirm(){
+const jwt = localStorage.getItem("jwt")
 fetch("http://localhost:3000/order/orderdetails", {
   method: "POST",
   headers: {
     'Content-Type': "application/json",
-    Accept: "application/json"
+    Accept: "application/json", 
+    'authorization': `Bearer ${jwt}`
   },
   body: JSON.stringify(formData)
 })

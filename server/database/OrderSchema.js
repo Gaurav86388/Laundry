@@ -14,7 +14,7 @@ const orderSchema = mongoose.Schema({
     
    price:{type: String, required: true},
    status:{type: String, required: true, default: "Order Registered"},
-   //userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
+   userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
     
 })
 

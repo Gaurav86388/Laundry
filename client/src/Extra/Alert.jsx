@@ -23,7 +23,7 @@ orderSubFail: {
 regFail: {
   heading :"Registration Unsuccessful.",
   message : 'The email / phone you entered already exists.',
-  btnName : "Go back"
+  btnName : "Go Back"
 },
 
 regPass: {

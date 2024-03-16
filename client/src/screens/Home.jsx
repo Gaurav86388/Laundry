@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Aside from '../components/Aside'
 import "./Home.css"
@@ -9,19 +9,19 @@ import CreateOrder from '../renders/CreateOrder'
 import Records from '../renders/Records'
 import Service from '../renders/Service'
 import { useRender } from '../Context'
-import CancelAlert from '../Extra/CancelAlert'
+
 
 const navNames = ["Pricing", "Career", "Username"]
 
 const Home = () => {
 
-  const {render} = useRender()
+  const {render, username} = useRender()
  
-
+ 
   return (
     <div className='home'>
         <div className="top">
-        <Navbar navNames = {navNames}/>
+        <Navbar navNames = {navNames} username={username}/>
       </div>
       <div className="middle">
 

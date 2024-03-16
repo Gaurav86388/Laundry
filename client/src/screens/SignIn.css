@@ -102,59 +102,108 @@ border-radius: 4px;
 
 .signin-form{
     position: absolute;
-    top: 35%;
+    top: 40%;
     right: 34%;
     height: 63%;
 }
 
-.input-data{
+.input-data-found,.input-data-not-found,.input-data-password, .input-data-wrong-password{
     display: flex;
     flex-direction: column;    
     width: 450px;
-    height: 80px;
+    height: 40px;
+    margin-bottom: 1px;
     
-
+    
 }
 
-.input-data label{
+.input-data-found label, .input-data-not-found label, .input-data-password label,  .input-data-wrong-password label  {
     
     color: rgb(112, 128, 144, 0.8);
     font-size: 20px;
     transition: all 0.3s  ease-in-out;
     position: relative;
+    bottom: 50px;
+   
 }
 
-.input-data input{
+.input-data-found input, .input-data-not-found input, .input-data-password input,  .input-data-wrong-password input{
     border: none;
     outline: none;
     letter-spacing: 2px;
-    font-size: 17px;
+    font-size: 18px;
     background: transparent;
     border-bottom: 1px solid #565657;
-    
-}
-
-.input-data input:focus + label,
-.input-data  input:valid + label{
-
-    font-size: 12px;
-    transform: translateY(-30px);
+    font-weight: 600;
 
     
 }
+
+.input-data-not-found input, .input-data-wrong-password input{
+    border-bottom: 1px solid #EF1A1A;
+    color:#EF1A1A;
+}
+
+.input-data-found input:focus + label,
+.input-data-found input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-not-found input:focus + label,
+.input-data-not-found input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-password input:focus + label,
+.input-data-password input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+.input-data-wrong-password input:focus + label,
+.input-data-wrong-password input:valid + label{
+
+    font-size: 16px;
+    transform: translateY(-10px);
+    
+}
+
+
+.error-message-active{
+    font-style: italic;
+    text-align: right;
+    margin-bottom: 50px;
+    color: #EF1A1A;
+    
+}
+.error-message-inactive{
+    visibility: hidden;
+    margin-top: 15px;
+}
+
+
 
 .lock{
     
     position: absolute;
-    top: 21%;
+    top: 19.5%;
     right: 1%;
       
 }
 
 #forget-link{
-    position: absolute;
-    top: 31%;
-    right: 1%;
+    position: relative;
+    left: 70%;
+    bottom: 9%;
+    
     font-weight: 600;
       
 }

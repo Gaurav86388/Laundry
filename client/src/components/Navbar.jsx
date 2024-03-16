@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Navbar.css'
 import profilepic from "/profilepic.png"
-const Navbar = ({navNames}) => {
+const Navbar = ({navNames, username}) => {
 
    
 
@@ -23,7 +23,7 @@ const Navbar = ({navNames}) => {
                         <div className='user-profile-pic'>
                         <img src={profilepic} alt="profile-image"/>
                         </div>
-                  User Name
+                  {username === "" ? "User Name" : username}
                   </div>
                   :
                   <div id={linkid} key={index} >

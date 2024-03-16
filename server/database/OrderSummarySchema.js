@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const orderSummarySchema = mongoose.Schema({
-    //user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  userId : { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     orderId: {type: String, required: true},
     storeDetails: {
       storeLocation: { type: String, required: true},

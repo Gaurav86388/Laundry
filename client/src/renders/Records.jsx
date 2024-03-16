@@ -8,17 +8,17 @@ import CancelSummary from "../components/CancelSummary"
 import { useRender } from "../Context";
 import CancelAlert from "../Extra/CancelAlert";
 
-function ViewButton({view, orderList, orderId, setOrderId}){
+function ViewButton({view, orderList, orderId, setOrderId, status}){
 
   const [viewOpen, setViewOpen] = useState(false)
-  
+ 
   function handleViewButton(){
     setOrderId(orderId)
     setViewOpen(prev=>!prev)
   }
 
   return <>
-    {viewOpen && <CancelSummary orderList={orderList} handleViewButton={setViewOpen} orderId={orderId}/>}
+    {viewOpen && <CancelSummary orderList={orderList} setOrderId={setOrderId} setViewOpen={setViewOpen} orderId={orderId} status={status}/>}
     <div className="view-img">
     <img src={view} alt="view image" onClick={handleViewButton}/>
   </div>
@@ -29,31 +29,22 @@ function ViewButton({view, orderList, orderId, setOrderId}){
 
 
 function CancelOrder({status, orderId, setOrderId}){
-  const [ordercancelled, setOrderCancelled] = useState(false)
 
-  const {setCancelAlert, cancelProceedIndex, } = useRender()
+  const {setCancelAlert} = useRender()
 
   
   function handleCancelOrder(){
   
     setCancelAlert(true)
     setOrderId(orderId)
-    
   }
 
-  useEffect(()=>{
-    if(cancelProceedIndex === orderId){
-      setOrderCancelled(true)
-    }
-
-  }, [cancelProceedIndex])
-  
 
 
   return <div className="order-status">
-          <span id={ordercancelled ? "item-status-active" : ""}>{ordercancelled ? "Cancelled": status}</span>
+          <span id={status === "Cancelled"? "item-status-active" : ""}>{status}</span>
 
-          <input type="button" id="order-status-btn" value={ordercancelled ? "" : "Cancel Order"} onClick={handleCancelOrder}/>
+          <input type="button" id="order-status-btn" value={status === "Cancelled" ? "" : "Cancel Order"} onClick={handleCancelOrder}/>
             </div>
 }
 
@@ -74,14 +65,15 @@ const Records = () => {
 
   const [orderId, setOrderId] = useState()
 
-console.log(orderId)
-  useEffect(()=>{
 
+  useEffect(()=>{
+    const jwt = localStorage.getItem("jwt")
     fetch("http://localhost:3000/order/orderdetails", {
       method: 'GET',
       headers: {
         'Content-Type': "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
+        'authorization': `Bearer ${jwt}`
       },
     })
     .then((res)=>res.json())
@@ -144,7 +136,7 @@ console.log(orderId)
                   </td>
                   <td> <CancelOrder status={item.status} orderId={item.orderId} setOrderId={setOrderId}/> </td>
                   <td>
-                      <ViewButton view={view} orderList={localSummary} orderId={item.orderId} setOrderId={setOrderId}/>
+                      <ViewButton view={view} orderList={localSummary} orderId={item.orderId} setOrderId={setOrderId} status={item.status}/>
                   </td>
                 </tr>
               );

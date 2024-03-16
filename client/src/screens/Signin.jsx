@@ -10,8 +10,10 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Loader from "../Extra/Loader";
 
-
+import { useRender} from "../Context";
 const navNames = ["Home", "Pricing", "Career", "Sign In"];
+
+
 const Signin = () => {
   const navigate = useNavigate()
   const [signinDetails, setSigninDetails] = useState({
@@ -20,12 +22,14 @@ const Signin = () => {
   });
 
   const [signinSuccess, setSigninSuccess] = useState(false)
+  const [userNotFound, setNotUserFound] = useState(false)
+  const [passwordInCorrect, setPasswordInCorrect] = useState(false)
 
-
+  const {setUsername} = useRender()
 
   function handleSigninForm(e) {
     e.preventDefault();
-    console.log(signinDetails);
+  
     fetch("http://localhost:3000/user/login", {
       method: "POST",
       headers: {
@@ -36,14 +40,24 @@ const Signin = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+
         if(data.message === 'validated'){
+          const token = data.token
+          localStorage.setItem('jwt', token)
+
           setSigninSuccess(true)
+          setUsername(data.name)
 
           setTimeout(()=>{
             navigate("/home")
           }, 1000)
         } 
+        else if(data.message === "Not Found"){
+            setNotUserFound(true)
+        }
+        else if(data.message === "Invalid password"){
+          setPasswordInCorrect(true)
+        }
       })
       .catch((e) => console.log(e));
   }
@@ -51,7 +65,12 @@ const Signin = () => {
   function handleOnChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-
+    if(name === "Userkey"){
+      setNotUserFound(false)
+    }
+    else if(name ==="Password"){
+      setPasswordInCorrect(false)
+    }
     setSigninDetails((prev) => ({ ...prev, [name]: value }));
   }
   return ( <>
@@ -86,31 +105,40 @@ const Signin = () => {
           <h1 className="signin-right-title">SIGN IN</h1>
 
           <form className="signin-form" onSubmit={handleSigninForm}>
-            <div className="input-data">
-              <label htmlFor="Userkey">Mobile / Email</label>
+
+            <div className={userNotFound? "input-data-not-found":"input-data-found"}>
+              
               <input
                 name="Userkey"
                 type="text"
                 required
                 onChange={handleOnChange}
+               
               />
+              <label htmlFor="Userkey">Mobile / Email</label>
+              
             </div>
-
-            <div className="input-data">
-              <label htmlFor="Password">Password</label>
+           <p className={userNotFound ? "error-message-active" :"error-message-inactive"}>Please enter a valid phone number</p>
+            <div className={passwordInCorrect ? "input-data-wrong-password":"input-data-password"}>
+              
               <input
-                name="Password"
+                name="Password"     
                 type="password"
                 required
                 onChange={handleOnChange}
               />
+                <label htmlFor="Password">Password</label>
+                
             </div>
+
+            <p  className={passwordInCorrect? "error-message-active" :"error-message-inactive"}>Please enter a valid password</p>
+
             <div className="lock">
               <img src={lock} alt="lock" />
             </div>
 
             <Link to="/" id="forget-link">
-              {" "}
+             
               Forget Password ?
             </Link>
 

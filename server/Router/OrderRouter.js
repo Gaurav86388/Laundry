@@ -1,5 +1,5 @@
 import { Router } from "express";
-
+import jwt from "jsonwebtoken"
 import { users } from "../database/UserSchema.js";
 import {order} from "../database/OrderSchema.js"
 import {orderSummary} from "../database/OrderSummarySchema.js"
@@ -36,10 +36,10 @@ function authenticateToken(req, res, next){
 
         const userdata = await users.findOne({_id: decoded.data})
 
-        if(!userdata) return res.status(400).render("http://localhost:5173")
+        if(!userdata) return res.status(400).render("http://localhost:5173").json({status:"Unauthorised"})
         
         req.userId = userdata._id
-
+        
         next()
 
     })
@@ -47,9 +47,6 @@ function authenticateToken(req, res, next){
 
 }
 
-orderRouter.get("/secret", authenticateToken, async(req, res)=>{
-    res.json({text: "hi"})
-})
 
 
 async function generateOrderID(){
@@ -81,9 +78,9 @@ return sum
 
 }
 
-orderRouter.post("/orderdetails", async(req, res)=>{
+orderRouter.post("/orderdetails", authenticateToken,async(req, res)=>{
 
-
+const auth_userId = req.userId
  const nextOrderId = await generateOrderID()
  const storeLocation = req.body.storeDetails.storeLocation
 
@@ -99,8 +96,8 @@ orderRouter.post("/orderdetails", async(req, res)=>{
 
 let addOrderSummary, addOrder
  try{
-    addOrderSummary = await orderSummary.create({orderId: nextOrderId, ...req.body})
-    addOrder = await order.create({orderId: nextOrderId, storeLocation: storeLocation, city: city,
+    addOrderSummary = await orderSummary.create({orderId: nextOrderId, userId: auth_userId, ...req.body})
+    addOrder = await order.create({orderId: nextOrderId, userId: auth_userId, storeLocation: storeLocation, city: city,
          storePhone:storePhone,totalItem: totalItem, price:price, status:status, orderDateAndTime: orderDateAndTime})
  }
  catch(e){
@@ -117,14 +114,14 @@ let addOrderSummary, addOrder
 })
 
 
-orderRouter.get("/orderdetails", async(req, res)=>{
+orderRouter.get("/orderdetails", authenticateToken, async(req, res)=>{
 
-
+    const auth_userId = req.userId
     let addOrderSummary, addOrder;
 
     try{
-        addOrderSummary = await orderSummary.find()
-        addOrder = await order.find()
+        addOrderSummary = await orderSummary.find({userId : auth_userId})
+        addOrder = await order.find({userId : auth_userId})
     }
     catch(e){
         console.log(e)
@@ -140,5 +137,40 @@ orderRouter.get("/orderdetails", async(req, res)=>{
 
 
 })
+
+orderRouter.put("/orderdetails", authenticateToken, async(req, res)=>{
+
+
+const {orderId}= req.body
+
+let findData
+try{
+    findData = await order.findOne({orderId: orderId})
+}
+catch(e){
+    console.log(e)
+}
+
+let updatedData
+if(findData){
+    try{
+        updatedData = await order.updateOne({orderId: orderId}, {$set:{status: "Cancelled"}})
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
+if(updatedData){
+
+    return res.status(200).json({status: "cancelled"})
+}
+else{
+    return res.status(200).json({status: "update failed"})
+}
+
+
+})
+
 
 export default orderRouter

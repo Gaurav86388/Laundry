@@ -26,7 +26,7 @@ userRouter.post("/login", async(req, res)=>{
     console.log(Userkey, Password)
 
     let typeofUserkey = validateUserkey(Userkey)
-    console.log(typeofUserkey)
+  
 
     const userFound  = typeofUserkey==="number"?  await users.findOne({Phone: Userkey})  :await users.findOne({Email: Userkey})
     if(!userFound){
@@ -34,11 +34,13 @@ userRouter.post("/login", async(req, res)=>{
     }
    else{
 
+
+            const username = userFound.Name
             const storedHashedPassword = userFound.Password
 
             bcrypt.compare(Password, storedHashedPassword, (err, result)=>{
 
-                if(err) return res.status(404).json({message:"Not Authorised"})
+                if(err) return res.status(404).json({message:"Incorrect Password"})
                 
                 if(result){
                     const payload = {
@@ -47,8 +49,8 @@ userRouter.post("/login", async(req, res)=>{
                     }
 
                     const accesstoken = jwt.sign(payload, secret)
-                        res.cookie('jwt', accesstoken, { httpOnly: false, sameSite: 'Lax'});
-                    return res.status(200).json({message: "validated", token: accesstoken})
+                        
+                    return res.status(200).json({message: "validated", token: accesstoken, name: username})
                 }
                 else{
                     res.status(401).json({ message: "Invalid password" });
@@ -66,18 +68,19 @@ userRouter.post("/login", async(req, res)=>{
 userRouter.post("/register", async(req, res)=>{
 
     const registrationData = req.body
-    const {Email, Password} = req.body
+    const {Email, Phone, Password} = req.body
     console.log(registrationData)
-    let existingUser
+    let existingEmail, existingPhone
 
     try{
-        existingUser = await users.findOne({Email: Email})
+        existingEmail = await users.findOne({Email: Email})
+        existingPhone = await users.findOne({Phone: Phone})
     }
-    catch(e){
+    catch(e){s
         console.log(e)
     }
 
-    if(existingUser) return res.status(400).json({message: 'User already exists.'})
+    if(existingEmail || existingPhone) return res.status(400).json({message: 'User already exists.'})
 
     bcrypt.hash(Password, salt_rounds, async(err, hash)=>{
 
