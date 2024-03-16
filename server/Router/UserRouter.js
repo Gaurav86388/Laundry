@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { users } from "../database/UserSchema.js";
+import dotenv from 'dotenv'
 
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 const salt_rounds = 10
-const secret = "sdfhsdfihsdfahsdfahsdifasdyqtoetqwncnczxmncvlafu"
+const secret = process.env.secret
 
 const userRouter = Router()
-
+dotenv.config()
 
 function validateUserkey(Userkey){
 
