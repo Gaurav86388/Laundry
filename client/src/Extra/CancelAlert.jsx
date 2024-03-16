@@ -15,7 +15,7 @@ const CancelAlert = ({orderId}) => {
 function handleAlertProceed(){
   const jwt = localStorage.getItem("jwt")
 
-fetch("http://localhost:3000/order/orderdetails",{
+fetch("https://laundrycartapp-jahb.onrender.com/order/orderdetails",{
 
   method: "PUT",
   headers: {

@@ -64,7 +64,7 @@ const [checkMatchPassword, setCheckMatchPassword] = useState(true)
     if(RegDetails.Password !== RegDetails.ConfirmPassword) return setCheckMatchPassword(false)
 
    
-      fetch("http://localhost:3000/user/register", {
+      fetch("https://laundrycartapp-jahb.onrender.com/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const [checkMatchPassword, setCheckMatchPassword] = useState(true)
       })
     .then((res)=>res.json())
     .then(data=>{
-      console.log(data)
+      
       data && setShowAlert(data.message)
       
       

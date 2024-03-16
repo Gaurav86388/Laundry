@@ -77,7 +77,7 @@ userRouter.post("/register", async(req, res)=>{
         existingEmail = await users.findOne({Email: Email})
         existingPhone = await users.findOne({Phone: Phone})
     }
-    catch(e){s
+    catch(e){
         console.log(e)
     }
 
