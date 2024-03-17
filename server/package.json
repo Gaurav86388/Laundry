@@ -1,13 +1,13 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "10x Laundry Cart Project by Gaurav Gogoi and Pratik Bulkunde",
+  "description": "10x Laundry Cart Project by Gaurav Gogoi",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Gaurav Gogoi and Pratik Bulkunde",
+  "author": "Gaurav Gogoi",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
