@@ -119,7 +119,7 @@ const Signin = () => {
               <label htmlFor="Userkey">Mobile / Email</label>
               
             </div>
-           <p className={userNotFound ? "error-message-active" :"error-message-inactive"}>Please enter a valid phone number</p>
+           <p className={userNotFound ? "error-message-active" :"error-message-inactive"}>Please enter a valid email or phone number</p>
             <div className={passwordInCorrect ? "input-data-wrong-password":"input-data-password"}>
               
               <input
